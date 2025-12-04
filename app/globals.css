@@ -163,3 +163,20 @@ body {
   animation: fadeIn 0.2s ease-out;
 }
 
+/* Falling from top animation */
+@keyframes fallFromTop {
+  from {
+    opacity: 0;
+    transform: translateY(-100px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fall-from-top {
+  animation: fallFromTop 0.8s ease-out forwards;
+  opacity: 0;
+}
+

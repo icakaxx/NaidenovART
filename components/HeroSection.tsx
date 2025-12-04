@@ -117,7 +117,7 @@ export default function HeroSection() {
       {/* Content */}
       <div className="relative container mx-auto px-6 pt-32 pb-24 flex flex-col items-center justify-center min-h-screen z-[20]">
         {/* Logo - Center and Attention-Catching */}
-        <div className="flex items-center justify-center mb-8 relative z-[25]">
+        <div className="flex items-center justify-center mb-8 relative z-[25] animate-fall-from-top" style={{ animationDelay: '0.1s' }}>
           <div className="relative w-48 h-48 lg:w-64 lg:h-64 rounded-full overflow-hidden flex items-center justify-center bg-white/95 backdrop-blur-md border-8 border-[#1c1ca0]/30 shadow-2xl">
             <Image
               src="/images/logo.webp"
@@ -136,7 +136,7 @@ export default function HeroSection() {
         <div className="max-w-2xl space-y-8 relative z-[25] text-center">
 
           {/* Description - Light Style */}
-          <div className="relative mx-auto">
+          <div className="relative mx-auto animate-fall-from-top" style={{ animationDelay: '0.3s' }}>
             <div className="absolute inset-0 bg-gradient-to-r from-blue-200/40 via-purple-200/40 to-cyan-200/40 rounded-2xl blur-lg" />
             <p className="relative text-xl lg:text-2xl text-gray-800 max-w-md mx-auto leading-relaxed font-bold bg-gradient-to-br from-blue-50 via-purple-50 to-cyan-50 backdrop-blur-sm px-8 py-5 rounded-2xl shadow-lg border-2 border-blue-200/50">
               Рисуване по всичко!
@@ -144,7 +144,7 @@ export default function HeroSection() {
           </div>
 
           {/* CTA Button - Light Style */}
-          <button className="group relative mt-4 mx-auto bg-gradient-to-r from-[#1c1ca0] via-[#2563eb] to-[#0891b2] px-10 py-4 rounded-full font-bold text-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 flex items-center space-x-3 text-white overflow-hidden">
+          <button className="group relative mt-4 mx-auto bg-gradient-to-r from-[#1c1ca0] via-[#2563eb] to-[#0891b2] px-10 py-4 rounded-full font-bold text-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 flex items-center space-x-3 text-white overflow-hidden animate-fall-from-top" style={{ animationDelay: '0.5s' }}>
             <div className="absolute inset-0 bg-gradient-to-r from-[#2563eb] via-[#0891b2] to-[#1c1ca0] opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
             <span className="relative z-10">ВИЖ ПОРТФОЛИО</span>
             <svg
@@ -164,7 +164,7 @@ export default function HeroSection() {
 
           {/* Badges Row - Light Style */}
           <div className="flex flex-col sm:flex-row gap-6 pt-6">
-            <div className="relative group">
+            <div className="relative group animate-fall-from-top" style={{ animationDelay: '0.7s' }}>
               <div className="absolute inset-0 bg-gradient-to-r from-blue-100 to-cyan-100 rounded-xl blur-lg group-hover:blur-xl transition-all" />
               <div className="relative flex items-start space-x-3 bg-white/90 backdrop-blur-sm p-4 rounded-xl shadow-md border border-gray-200">
                 <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[#1c1ca0] to-[#2563eb] flex items-center justify-center flex-shrink-0 shadow-md">
@@ -192,7 +192,7 @@ export default function HeroSection() {
               </div>
             </div>
 
-            <div className="relative group">
+            <div className="relative group animate-fall-from-top" style={{ animationDelay: '0.9s' }}>
               <div className="absolute inset-0 bg-gradient-to-r from-purple-100 to-pink-100 rounded-xl blur-lg group-hover:blur-xl transition-all" />
               <div className="relative flex items-start space-x-3 bg-white/90 backdrop-blur-sm p-4 rounded-xl shadow-md border border-gray-200">
                 <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[#0891b2] to-[#06b6d4] flex items-center justify-center flex-shrink-0 shadow-md">
