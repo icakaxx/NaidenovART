@@ -1,8 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
-import { useState, useEffect, useRef } from "react";
+import { useState } from "react";
 
 interface NavItem {
   name: string;
@@ -13,7 +12,6 @@ interface NavItem {
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
-  const canvasRef = useRef<HTMLCanvasElement>(null);
 
   const navItems: NavItem[] = [
     {
@@ -52,88 +50,11 @@ export default function Header() {
     },
   ];
 
-  // Create animated stars for cosmic header
-  useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-
-    const ctx = canvas.getContext("2d");
-    if (!ctx) return;
-
-    // Set canvas size to match header
-    const resizeCanvas = () => {
-      canvas.width = window.innerWidth;
-      canvas.height = 100; // Header height
-    };
-    resizeCanvas();
-    window.addEventListener("resize", resizeCanvas);
-
-    // Create stars
-    const stars: Array<{ x: number; y: number; size: number; opacity: number; speed: number; twinkleSpeed: number }> = [];
-    for (let i = 0; i < 100; i++) {
-      stars.push({
-        x: Math.random() * canvas.width,
-        y: Math.random() * canvas.height,
-        size: Math.random() * 1.5 + 0.5,
-        opacity: Math.random(),
-        speed: Math.random() * 0.1 + 0.05,
-        twinkleSpeed: Math.random() * 0.03 + 0.01,
-      });
-    }
-
-    // Animate stars
-    const animate = () => {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-      stars.forEach((star) => {
-        // Twinkling effect
-        star.opacity += star.twinkleSpeed;
-        if (star.opacity > 1 || star.opacity < 0.2) {
-          star.twinkleSpeed = -star.twinkleSpeed;
-        }
-
-        // Slow horizontal drift
-        star.x += star.speed;
-        if (star.x > canvas.width) star.x = 0;
-
-        // Draw star
-        ctx.fillStyle = `rgba(255, 255, 255, ${star.opacity})`;
-        ctx.beginPath();
-        ctx.arc(star.x, star.y, star.size, 0, Math.PI * 2);
-        ctx.fill();
-
-        // Add glow for larger stars
-        if (star.size > 1) {
-          const gradient = ctx.createRadialGradient(star.x, star.y, 0, star.x, star.y, star.size * 3);
-          gradient.addColorStop(0, `rgba(147, 197, 253, ${star.opacity * 0.5})`);
-          gradient.addColorStop(1, 'rgba(147, 197, 253, 0)');
-          ctx.fillStyle = gradient;
-          ctx.beginPath();
-          ctx.arc(star.x, star.y, star.size * 3, 0, Math.PI * 2);
-          ctx.fill();
-        }
-      });
-
-      requestAnimationFrame(animate);
-    };
-
-    animate();
-
-    return () => {
-      window.removeEventListener("resize", resizeCanvas);
-    };
-  }, []);
 
   return (
     <header className="fixed top-0 left-0 right-0 z-[100] overflow-visible">
       {/* Cosmic Background */}
       <div className="absolute inset-0 bg-gradient-to-r from-[#0f0c29] via-[#1c1ca0] to-[#24243e] opacity-95" />
-      
-      {/* Animated stars canvas */}
-      <canvas
-        ref={canvasRef}
-        className="absolute inset-0 pointer-events-none"
-      />
       
       {/* Nebula-like glow effects */}
       <div className="absolute top-0 left-1/4 w-64 h-64 bg-purple-500/20 rounded-full blur-3xl" />
@@ -143,22 +64,8 @@ export default function Header() {
       <div className="absolute bottom-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-blue-400/50 to-transparent" />
       <nav className="relative container mx-auto px-6 py-6">
         <div className="flex items-center w-full">
-          {/* Left Side: Logo + Картини + Проекти */}
+          {/* Left Side: Картини + Проекти */}
           <div className="hidden lg:flex items-center flex-1">
-            {/* Logo */}
-            <Link href="/" className="relative group">
-              <div className="relative w-20 h-20 rounded-full overflow-hidden flex items-center justify-center bg-white/10 backdrop-blur-sm border-2 border-cyan-400/30 shadow-lg">
-                <Image
-                  src="/images/logo.webp"
-                  alt="NaidenovART Logo"
-                  width={80}
-                  height={80}
-                  className="object-cover w-full h-full"
-                  priority
-                />
-              </div>
-            </Link>
-
             {/* Spacing */}
             <div className="flex-1" />
 
@@ -258,22 +165,8 @@ export default function Header() {
             </div>
           </div>
 
-          {/* Mobile: Logo + Menu Button */}
-          <div className="lg:hidden flex items-center space-x-4">
-            {/* Mobile Logo */}
-            <Link href="/" className="relative group">
-              <div className="relative w-14 h-14 rounded-full overflow-hidden flex items-center justify-center bg-white/10 backdrop-blur-sm border-2 border-cyan-400/30 shadow-md">
-                <Image
-                  src="/images/logo.webp"
-                  alt="NaidenovART Logo"
-                  width={56}
-                  height={56}
-                  className="object-cover w-full h-full"
-                  priority
-                />
-              </div>
-            </Link>
-
+          {/* Mobile: Menu Button */}
+          <div className="lg:hidden flex items-center">
             {/* Mobile Menu Button - Cosmic Style */}
             <button
               className="text-white p-2 hover:bg-blue-500/30 rounded-lg transition-all duration-300 backdrop-blur-sm border border-blue-400/30"
