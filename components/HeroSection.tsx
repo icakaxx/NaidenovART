@@ -31,8 +31,8 @@ export default function HeroSection() {
           minWidth: 200.00,
           scale: 1.00,
           scaleMobile: 1.00,
-          color: 0x3b82f6,
-          backgroundColor: 0x0f0c29,
+          color: 0x1c1ca0,
+          backgroundColor: 0xf8fafc,
           points: 12,
           maxDistance: 25,
           spacing: 18,
@@ -139,8 +139,8 @@ export default function HeroSection() {
 
   return (
     <section className="relative w-full min-h-screen overflow-hidden">
-      {/* Cosmic Background Layer */}
-      <div className="absolute inset-0 bg-gradient-to-b from-[#0f0c29] via-[#1c1ca0] to-[#24243e]" />
+      {/* Light Background Layer */}
+      <div className="absolute inset-0 bg-gradient-to-b from-white via-gray-50 to-blue-50" />
       
       {/* Background Car Pattern - Behind Everything */}
       <div className="absolute inset-0 pointer-events-none z-[1] overflow-hidden">
@@ -220,7 +220,7 @@ export default function HeroSection() {
       {/* Vanta.js NET Background */}
       <div
         ref={vantaRef}
-        className="absolute inset-0 pointer-events-none opacity-60 z-[2]"
+        className="absolute inset-0 pointer-events-none opacity-30 z-[2]"
       />
       
       {/* Animated Stars Canvas */}
@@ -273,46 +273,40 @@ export default function HeroSection() {
       <div className="relative container mx-auto px-6 pt-32 pb-24 flex flex-col lg:flex-row items-center justify-between gap-12 z-[20]">
         {/* Left Text Block */}
         <div className="max-w-xl space-y-8 relative z-[25]">
-          {/* Breadcrumb - Cosmic Style */}
-          <div className="flex items-center space-x-3 text-sm bg-gradient-to-r from-purple-900/40 to-blue-900/40 backdrop-blur-md px-5 py-3 rounded-full w-fit shadow-lg border border-blue-400/30">
+          {/* Breadcrumb - Light Style */}
+          <div className="flex items-center space-x-3 text-sm bg-white/90 backdrop-blur-md px-5 py-3 rounded-full w-fit shadow-md border border-gray-200">
             <svg
-              className="w-4 h-4 text-cyan-300 drop-shadow-[0_0_8px_rgba(103,232,249,0.8)]"
+              className="w-4 h-4 text-[#1c1ca0]"
               fill="currentColor"
               viewBox="0 0 20 20"
             >
               <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z" />
             </svg>
-            <span className="text-blue-200 font-semibold">CREATIVE SERVICES</span>
-            <span className="text-blue-400">/</span>
-            <span className="text-cyan-300 uppercase tracking-wider font-bold drop-shadow-[0_0_8px_rgba(103,232,249,0.6)]">
-              AUTOMOTIVE ART
-            </span>
+            <span className="text-[#1c1ca0] font-semibold">ТВОРЧЕСКИ УСЛУГИ</span>
           </div>
 
-          {/* Main Heading - Cosmic Style */}
+          {/* Main Heading - Light Style */}
           <h1 className="text-5xl lg:text-7xl font-black leading-tight">
-            <span className="block text-white drop-shadow-[0_0_20px_rgba(255,255,255,0.5)]">ARTISTIC</span>
-            <span className="block bg-gradient-to-r from-cyan-300 via-blue-300 to-purple-300 bg-clip-text text-transparent drop-shadow-[0_0_30px_rgba(147,197,253,0.8)]">
-              VISIONS
+            <span className="block text-gray-900">ХУДОЖЕСТВЕНА</span>
+            <span className="block bg-gradient-to-r from-[#1c1ca0] via-[#2563eb] to-[#0891b2] bg-clip-text text-transparent">
+              ВИЗИЯ
             </span>
           </h1>
 
-          {/* Description - Cosmic Style */}
+          {/* Description - Light Style */}
           <div className="relative">
-            <div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 to-purple-500/20 rounded-2xl blur-xl" />
-            <p className="relative text-lg lg:text-xl text-blue-50 max-w-lg leading-relaxed font-medium bg-gradient-to-br from-[#1c1ca0]/60 to-[#0f0c29]/60 backdrop-blur-md p-6 rounded-2xl shadow-2xl border border-blue-400/30">
-              Transform your automotive dreams into reality. Specializing in custom
-              car art, helmet designs, and creative murals that bring your vision
-              to life.
+            <div className="absolute inset-0 bg-gradient-to-r from-blue-200/60 via-purple-200/60 to-cyan-200/60 rounded-2xl blur-xl" />
+            <p className="relative text-xl lg:text-2xl text-gray-800 max-w-md leading-relaxed font-bold bg-gradient-to-br from-blue-50 via-purple-50 to-cyan-50 backdrop-blur-sm px-8 py-5 rounded-2xl shadow-lg border-2 border-blue-200/50">
+              Рисуване по.... всичко!
             </p>
           </div>
 
-          {/* CTA Button - Cosmic Style */}
-          <button className="group relative mt-4 bg-gradient-to-r from-cyan-500 via-blue-500 to-purple-500 px-10 py-4 rounded-full font-bold text-lg shadow-[0_0_30px_rgba(59,130,246,0.6)] hover:shadow-[0_0_50px_rgba(59,130,246,0.9)] transition-all duration-300 transform hover:scale-105 flex items-center space-x-3 text-white overflow-hidden">
-            <div className="absolute inset-0 bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-            <span className="relative z-10 drop-shadow-[0_0_10px_rgba(255,255,255,0.5)]">VIEW PORTFOLIO</span>
+          {/* CTA Button - Light Style */}
+          <button className="group relative mt-4 bg-gradient-to-r from-[#1c1ca0] via-[#2563eb] to-[#0891b2] px-10 py-4 rounded-full font-bold text-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 flex items-center space-x-3 text-white overflow-hidden">
+            <div className="absolute inset-0 bg-gradient-to-r from-[#2563eb] via-[#0891b2] to-[#1c1ca0] opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+            <span className="relative z-10">ВИЖ ПОРТФОЛИО</span>
             <svg
-              className="relative z-10 w-5 h-5 group-hover:translate-x-1 transition-transform drop-shadow-[0_0_8px_rgba(255,255,255,0.5)]"
+              className="relative z-10 w-5 h-5 group-hover:translate-x-1 transition-transform"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -326,14 +320,14 @@ export default function HeroSection() {
             </svg>
           </button>
 
-          {/* Badges Row - Cosmic Style */}
+          {/* Badges Row - Light Style */}
           <div className="flex flex-col sm:flex-row gap-6 pt-6">
             <div className="relative group">
-              <div className="absolute inset-0 bg-gradient-to-r from-blue-500/30 to-cyan-500/30 rounded-xl blur-lg group-hover:blur-xl transition-all" />
-              <div className="relative flex items-start space-x-3 bg-gradient-to-br from-[#1c1ca0]/70 to-[#0f0c29]/70 backdrop-blur-md p-4 rounded-xl shadow-lg border border-blue-400/30">
-                <div className="w-12 h-12 rounded-full bg-gradient-to-br from-cyan-400 to-blue-500 flex items-center justify-center flex-shrink-0 shadow-[0_0_20px_rgba(34,211,238,0.6)]">
+              <div className="absolute inset-0 bg-gradient-to-r from-blue-100 to-cyan-100 rounded-xl blur-lg group-hover:blur-xl transition-all" />
+              <div className="relative flex items-start space-x-3 bg-white/90 backdrop-blur-sm p-4 rounded-xl shadow-md border border-gray-200">
+                <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[#1c1ca0] to-[#2563eb] flex items-center justify-center flex-shrink-0 shadow-md">
                   <svg
-                    className="w-6 h-6 text-white drop-shadow-lg"
+                    className="w-6 h-6 text-white"
                     fill="currentColor"
                     viewBox="0 0 20 20"
                   >
@@ -345,11 +339,11 @@ export default function HeroSection() {
                   </svg>
                 </div>
                 <div>
-                  <p className="font-bold text-base leading-snug tracking-wide text-white drop-shadow-lg">
-                    PROFESSIONAL
+                  <p className="font-bold text-base leading-snug tracking-wide text-gray-900">
+                    ПРОФЕСИОНАЛНА
                     <br />
-                    <span className="text-sm text-blue-200 font-normal">
-                      QUALITY WORK
+                    <span className="text-sm text-gray-600 font-normal">
+                      КАЧЕСТВЕНА РАБОТА
                     </span>
                   </p>
                 </div>
@@ -357,11 +351,11 @@ export default function HeroSection() {
             </div>
 
             <div className="relative group">
-              <div className="absolute inset-0 bg-gradient-to-r from-purple-500/30 to-pink-500/30 rounded-xl blur-lg group-hover:blur-xl transition-all" />
-              <div className="relative flex items-start space-x-3 bg-gradient-to-br from-[#1c1ca0]/70 to-[#0f0c29]/70 backdrop-blur-md p-4 rounded-xl shadow-lg border border-purple-400/30">
-                <div className="w-12 h-12 rounded-full bg-gradient-to-br from-purple-400 to-pink-500 flex items-center justify-center flex-shrink-0 shadow-[0_0_20px_rgba(168,85,247,0.6)]">
+              <div className="absolute inset-0 bg-gradient-to-r from-purple-100 to-pink-100 rounded-xl blur-lg group-hover:blur-xl transition-all" />
+              <div className="relative flex items-start space-x-3 bg-white/90 backdrop-blur-sm p-4 rounded-xl shadow-md border border-gray-200">
+                <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[#0891b2] to-[#06b6d4] flex items-center justify-center flex-shrink-0 shadow-md">
                   <svg
-                    className="w-6 h-6 text-white drop-shadow-lg"
+                    className="w-6 h-6 text-white"
                     fill="currentColor"
                     viewBox="0 0 20 20"
                   >
@@ -369,11 +363,11 @@ export default function HeroSection() {
                   </svg>
                 </div>
                 <div>
-                  <p className="font-bold text-base leading-snug tracking-wide text-white drop-shadow-lg">
-                    CUSTOM
+                  <p className="font-bold text-base leading-snug tracking-wide text-gray-900">
+                    ПЕРСОНАЛИЗИРАНИ
                     <br />
-                    <span className="text-sm text-purple-200 font-normal">
-                      CREATIVE SOLUTIONS
+                    <span className="text-sm text-gray-600 font-normal">
+                      ТВОРЧЕСКИ РЕШЕНИЯ
                     </span>
                   </p>
                 </div>
@@ -388,10 +382,10 @@ export default function HeroSection() {
           <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/40 via-blue-500/40 to-purple-500/40 rounded-3xl blur-3xl transform scale-110 animate-pulse" style={{ animationDuration: '5s' }} />
           <div className="absolute inset-0 bg-gradient-to-tl from-purple-500/30 via-pink-500/30 to-blue-500/30 rounded-3xl blur-2xl transform scale-105 animate-pulse" style={{ animationDuration: '7s', animationDelay: '2s' }} />
           
-          {/* Main Featured Image Container - Cosmic Frame */}
-          <div className="relative bg-gradient-to-br from-[#1c1ca0]/80 to-[#0f0c29]/80 backdrop-blur-xl p-6 lg:p-8 rounded-3xl border-2 border-cyan-400/50 shadow-[0_0_50px_rgba(34,211,238,0.4)] hover:shadow-[0_0_80px_rgba(34,211,238,0.6)] transition-all duration-500 group">
-            {/* Featured Car Artwork with Cosmic Border */}
-            <div className="relative w-[280px] sm:w-[400px] lg:w-[500px] h-[280px] sm:h-[400px] lg:h-[500px] rounded-2xl overflow-hidden shadow-[0_0_40px_rgba(34,211,238,0.3)] border-2 border-cyan-400/40 group-hover:border-cyan-300/60 transition-all">
+          {/* Main Featured Image Container - Light Frame */}
+          <div className="relative bg-white/95 backdrop-blur-sm p-6 lg:p-8 rounded-3xl border-2 border-gray-200 shadow-xl hover:shadow-2xl transition-all duration-500 group">
+            {/* Featured Car Artwork with Light Border */}
+            <div className="relative w-[280px] sm:w-[400px] lg:w-[500px] h-[280px] sm:h-[400px] lg:h-[500px] rounded-2xl overflow-hidden shadow-lg border-2 border-gray-200 group-hover:border-[#1c1ca0]/40 transition-all">
               <Image
                 src="/images/car-artwork.jpg"
                 alt="NaidenovART - Professional Car Illustration"
@@ -400,30 +394,30 @@ export default function HeroSection() {
                 priority
               />
               
-              {/* Cosmic Gradient overlay for text */}
-              <div className="absolute inset-0 bg-gradient-to-t from-[#0f0c29]/90 via-[#1c1ca0]/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              {/* Gradient overlay for text */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               
-              {/* Artwork label with cosmic glow */}
+              {/* Artwork label */}
               <div className="absolute bottom-0 left-0 right-0 p-6 transform translate-y-full group-hover:translate-y-0 transition-transform duration-300">
-                <h3 className="text-white font-black text-2xl drop-shadow-[0_0_20px_rgba(34,211,238,0.8)] mb-2">
-                  CUSTOM CAR ART
+                <h3 className="text-white font-black text-2xl mb-2">
+                  ПЕРСОНАЛИЗИРАНО АВТОМОБИЛНО ИЗКУСТВО
                 </h3>
-                <p className="text-cyan-100 text-sm font-medium drop-shadow-[0_0_10px_rgba(34,211,238,0.6)]">
-                  Professional automotive illustration & design
+                <p className="text-gray-100 text-sm font-medium">
+                  Професионална автомобилна илюстрация и дизайн
                 </p>
               </div>
               
               {/* Corner accents */}
-              <div className="absolute top-2 left-2 w-8 h-8 border-t-2 border-l-2 border-cyan-400/60 rounded-tl-lg" />
-              <div className="absolute top-2 right-2 w-8 h-8 border-t-2 border-r-2 border-cyan-400/60 rounded-tr-lg" />
-              <div className="absolute bottom-2 left-2 w-8 h-8 border-b-2 border-l-2 border-cyan-400/60 rounded-bl-lg" />
-              <div className="absolute bottom-2 right-2 w-8 h-8 border-b-2 border-r-2 border-cyan-400/60 rounded-br-lg" />
+              <div className="absolute top-2 left-2 w-8 h-8 border-t-2 border-l-2 border-[#1c1ca0]/40 rounded-tl-lg" />
+              <div className="absolute top-2 right-2 w-8 h-8 border-t-2 border-r-2 border-[#1c1ca0]/40 rounded-tr-lg" />
+              <div className="absolute bottom-2 left-2 w-8 h-8 border-b-2 border-l-2 border-[#1c1ca0]/40 rounded-bl-lg" />
+              <div className="absolute bottom-2 right-2 w-8 h-8 border-b-2 border-r-2 border-[#1c1ca0]/40 rounded-br-lg" />
             </div>
             
             {/* Small Gallery Preview - All 4 Car Images */}
             <div className="grid grid-cols-4 gap-3 mt-4">
               {/* Car 1 */}
-              <div className="relative aspect-square bg-gradient-to-br from-[#f97316] to-[#dc2626] rounded-lg overflow-hidden shadow-[0_0_15px_rgba(249,115,22,0.4)] hover:scale-110 hover:shadow-[0_0_25px_rgba(249,115,22,0.6)] transition-all cursor-pointer border border-orange-400/30 group">
+              <div className="relative aspect-square bg-gradient-to-br from-[#f97316] to-[#dc2626] rounded-lg overflow-hidden shadow-md hover:scale-110 hover:shadow-lg transition-all cursor-pointer border border-gray-200 group">
                 <Image
                   src="/images/car1.png"
                   alt="Car illustration 1"
@@ -433,7 +427,7 @@ export default function HeroSection() {
               </div>
               
               {/* Car 2 */}
-              <div className="relative aspect-square bg-gradient-to-br from-[#3b82f6] to-[#6366f1] rounded-lg overflow-hidden shadow-[0_0_15px_rgba(59,130,246,0.4)] hover:scale-110 hover:shadow-[0_0_25px_rgba(59,130,246,0.6)] transition-all cursor-pointer border border-blue-400/30 group">
+              <div className="relative aspect-square bg-gradient-to-br from-[#3b82f6] to-[#6366f1] rounded-lg overflow-hidden shadow-md hover:scale-110 hover:shadow-lg transition-all cursor-pointer border border-gray-200 group">
                 <Image
                   src="/images/car2.png"
                   alt="Car illustration 2"
@@ -443,7 +437,7 @@ export default function HeroSection() {
               </div>
               
               {/* Car 3 */}
-              <div className="relative aspect-square bg-gradient-to-br from-[#a855f7] to-[#ec4899] rounded-lg overflow-hidden shadow-[0_0_15px_rgba(168,85,247,0.4)] hover:scale-110 hover:shadow-[0_0_25px_rgba(168,85,247,0.6)] transition-all cursor-pointer border border-purple-400/30 group">
+              <div className="relative aspect-square bg-gradient-to-br from-[#a855f7] to-[#ec4899] rounded-lg overflow-hidden shadow-md hover:scale-110 hover:shadow-lg transition-all cursor-pointer border border-gray-200 group">
                 <Image
                   src="/images/car3.png"
                   alt="Car illustration 3"
@@ -453,7 +447,7 @@ export default function HeroSection() {
               </div>
               
               {/* Car 4 */}
-              <div className="relative aspect-square bg-gradient-to-br from-[#06b6d4] to-[#22d3ee] rounded-lg overflow-hidden shadow-[0_0_15px_rgba(6,182,212,0.4)] hover:scale-110 hover:shadow-[0_0_25px_rgba(6,182,212,0.6)] transition-all cursor-pointer border border-cyan-400/30 group">
+              <div className="relative aspect-square bg-gradient-to-br from-[#06b6d4] to-[#22d3ee] rounded-lg overflow-hidden shadow-md hover:scale-110 hover:shadow-lg transition-all cursor-pointer border border-gray-200 group">
                 <Image
                   src="/images/car4.png"
                   alt="Car illustration 4"
@@ -462,16 +456,12 @@ export default function HeroSection() {
                 />
               </div>
             </div>
-            
-            {/* Decorative cosmic orbs */}
-            <div className="absolute -top-8 -right-8 w-32 h-32 bg-gradient-to-br from-cyan-400/60 to-blue-500/60 rounded-full blur-2xl animate-pulse" style={{ animationDuration: '4s' }} />
-            <div className="absolute -bottom-8 -left-8 w-36 h-36 bg-gradient-to-br from-purple-500/60 to-pink-500/60 rounded-full blur-2xl animate-pulse" style={{ animationDuration: '6s', animationDelay: '2s' }} />
           </div>
         </div>
       </div>
 
-      {/* Bottom cosmic gradient overlay */}
-      <div className="absolute bottom-0 left-0 right-0 h-48 bg-gradient-to-t from-[#0f0c29] via-[#1c1ca0]/50 to-transparent pointer-events-none z-[15]" />
+      {/* Bottom gradient overlay */}
+      <div className="absolute bottom-0 left-0 right-0 h-48 bg-gradient-to-t from-white via-gray-50/50 to-transparent pointer-events-none z-[15]" />
     </section>
   );
 }

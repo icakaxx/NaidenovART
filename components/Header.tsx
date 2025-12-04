@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useState, useEffect, useRef } from "react";
 
 interface NavItem {
@@ -141,50 +142,65 @@ export default function Header() {
       {/* Border glow */}
       <div className="absolute bottom-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-blue-400/50 to-transparent" />
       <nav className="relative container mx-auto px-6 py-6">
-        <div className="flex items-center justify-between">
-          {/* Left Side: Logo + First 2 Tabs */}
-          <div className="hidden lg:flex items-center space-x-10 flex-1">
-            {/* Logo Placeholder */}
+        <div className="flex items-center w-full">
+          {/* Left Side: Logo + Картини + Проекти */}
+          <div className="hidden lg:flex items-center flex-1">
+            {/* Logo */}
             <Link href="/" className="relative group">
-              <div className="w-12 h-12 bg-gradient-to-br from-cyan-400/30 to-blue-500/30 rounded-lg border-2 border-cyan-400/50 flex items-center justify-center backdrop-blur-sm hover:border-cyan-300/70 transition-all duration-300 shadow-[0_0_20px_rgba(34,211,238,0.3)] hover:shadow-[0_0_30px_rgba(34,211,238,0.5)]">
-                <span className="text-cyan-300 font-black text-xl">N</span>
+              <div className="relative w-20 h-20 rounded-full overflow-hidden flex items-center justify-center bg-white/10 backdrop-blur-sm border-2 border-cyan-400/30 shadow-lg">
+                <Image
+                  src="/images/logo.webp"
+                  alt="NaidenovART Logo"
+                  width={80}
+                  height={80}
+                  className="object-cover w-full h-full"
+                  priority
+                />
               </div>
             </Link>
 
-            {/* First 2 Tabs */}
-            {navItems.slice(0, 2).map((item) => (
-              <div
-                key={item.name}
-                className="relative"
-                onMouseEnter={() => item.subtabs && setActiveDropdown(item.name)}
-                onMouseLeave={() => setActiveDropdown(null)}
-              >
-                <Link
-                  href={item.href}
-                  className="relative text-white text-sm font-bold tracking-wider hover:text-cyan-300 transition-all duration-300 group block py-2"
-                >
-                  <span className="relative z-10">{item.name}</span>
-                  <span className="absolute inset-0 bg-blue-500/0 group-hover:bg-blue-500/20 rounded-lg blur-sm transition-all duration-300" />
-                </Link>
+            {/* Spacing */}
+            <div className="flex-1" />
 
-                {/* Dropdown Menu */}
-                {item.subtabs && activeDropdown === item.name && (
-                  <div className="absolute top-full left-0 mt-2 min-w-[220px] bg-gradient-to-br from-[#1c1ca0]/95 to-[#0f0c29]/95 backdrop-blur-lg rounded-xl shadow-2xl border border-blue-400/30 overflow-hidden z-[100] animate-fadeIn">
-                    <div className="py-2">
-                      {item.subtabs.map((subtab) => (
-                        <Link
-                          key={subtab.name}
-                          href={subtab.href}
-                          className="block px-4 py-3 text-white text-sm font-medium hover:text-cyan-300 hover:bg-blue-500/20 transition-all duration-200"
-                        >
-                          {subtab.name}
-                        </Link>
-                      ))}
+            {/* First 2 Tabs centered in available space */}
+            <div className="flex items-center space-x-12" style={{ marginLeft: '-6rem' }}>
+              {navItems.slice(0, 2).map((item) => (
+                <div
+                  key={item.name}
+                  className="relative"
+                  onMouseEnter={() => item.subtabs && setActiveDropdown(item.name)}
+                  onMouseLeave={() => setActiveDropdown(null)}
+                >
+                  <Link
+                    href={item.href}
+                    className="relative text-white text-base font-bold tracking-wider hover:text-cyan-300 transition-all duration-300 group block py-2 px-4"
+                  >
+                    <span className="relative z-10">{item.name}</span>
+                    <span className="absolute inset-0 bg-blue-500/0 group-hover:bg-blue-500/20 rounded-lg blur-sm transition-all duration-300" />
+                  </Link>
+
+                  {/* Dropdown Menu */}
+                  {item.subtabs && activeDropdown === item.name && (
+                    <div className="absolute top-full left-0 mt-2 min-w-[220px] bg-gradient-to-br from-[#1c1ca0]/95 to-[#0f0c29]/95 backdrop-blur-lg rounded-xl shadow-2xl border border-blue-400/30 overflow-hidden z-[100] animate-fadeIn">
+                      <div className="py-2">
+                        {item.subtabs.map((subtab) => (
+                          <Link
+                            key={subtab.name}
+                            href={subtab.href}
+                            className="block px-4 py-3 text-white text-sm font-medium hover:text-cyan-300 hover:bg-blue-500/20 transition-all duration-200"
+                          >
+                            {subtab.name}
+                          </Link>
+                        ))}
+                      </div>
                     </div>
-                  </div>
-                )}
-              </div>
-            ))}
+                  )}
+                </div>
+              ))}
+            </div>
+
+            {/* Spacing before center */}
+            <div className="flex-1" />
           </div>
 
           {/* Center Logo - Cosmic Style */}
@@ -199,49 +215,62 @@ export default function Header() {
             <span className="absolute inset-0 bg-gradient-to-r from-cyan-400/30 via-blue-400/30 to-purple-400/30 blur-xl group-hover:blur-2xl transition-all duration-300" />
           </Link>
 
-          {/* Right Side: Last 3 Tabs */}
-          <div className="hidden lg:flex items-center space-x-10 flex-1 justify-end">
-            {navItems.slice(2).map((item) => (
-              <div
-                key={item.name}
-                className="relative"
-                onMouseEnter={() => item.subtabs && setActiveDropdown(item.name)}
-                onMouseLeave={() => setActiveDropdown(null)}
-              >
-                <Link
-                  href={item.href}
-                  className="relative text-white text-sm font-bold tracking-wider hover:text-cyan-300 transition-all duration-300 group block py-2"
-                >
-                  <span className="relative z-10">{item.name}</span>
-                  <span className="absolute inset-0 bg-blue-500/0 group-hover:bg-blue-500/20 rounded-lg blur-sm transition-all duration-300" />
-                </Link>
+          {/* Right Side: Улична кауза + Дрехи + За мен */}
+          <div className="hidden lg:flex items-center flex-1">
+            {/* Spacing after center - reduced to move tabs left */}
+            <div className="flex-1 mr-16" />
 
-                {/* Dropdown Menu */}
-                {item.subtabs && activeDropdown === item.name && (
-                  <div className="absolute top-full right-0 mt-2 min-w-[220px] bg-gradient-to-br from-[#1c1ca0]/95 to-[#0f0c29]/95 backdrop-blur-lg rounded-xl shadow-2xl border border-blue-400/30 overflow-hidden z-[100] animate-fadeIn">
-                    <div className="py-2">
-                      {item.subtabs.map((subtab) => (
-                        <Link
-                          key={subtab.name}
-                          href={subtab.href}
-                          className="block px-4 py-3 text-white text-sm font-medium hover:text-cyan-300 hover:bg-blue-500/20 transition-all duration-200"
-                        >
-                          {subtab.name}
-                        </Link>
-                      ))}
+            {/* Last 3 Tabs centered in available space */}
+            <div className="flex items-center space-x-12" style={{ marginLeft: '-48px' }}>
+              {navItems.slice(2).map((item) => (
+                <div
+                  key={item.name}
+                  className="relative"
+                  onMouseEnter={() => item.subtabs && setActiveDropdown(item.name)}
+                  onMouseLeave={() => setActiveDropdown(null)}
+                >
+                  <Link
+                    href={item.href}
+                    className="relative text-white text-base font-bold tracking-wider hover:text-cyan-300 transition-all duration-300 group block py-2 px-4"
+                  >
+                    <span className="relative z-10">{item.name}</span>
+                    <span className="absolute inset-0 bg-blue-500/0 group-hover:bg-blue-500/20 rounded-lg blur-sm transition-all duration-300" />
+                  </Link>
+
+                  {/* Dropdown Menu */}
+                  {item.subtabs && activeDropdown === item.name && (
+                    <div className="absolute top-full right-0 mt-2 min-w-[220px] bg-gradient-to-br from-[#1c1ca0]/95 to-[#0f0c29]/95 backdrop-blur-lg rounded-xl shadow-2xl border border-blue-400/30 overflow-hidden z-[100] animate-fadeIn">
+                      <div className="py-2">
+                        {item.subtabs.map((subtab) => (
+                          <Link
+                            key={subtab.name}
+                            href={subtab.href}
+                            className="block px-4 py-3 text-white text-sm font-medium hover:text-cyan-300 hover:bg-blue-500/20 transition-all duration-200"
+                          >
+                            {subtab.name}
+                          </Link>
+                        ))}
+                      </div>
                     </div>
-                  </div>
-                )}
-              </div>
-            ))}
+                  )}
+                </div>
+              ))}
+            </div>
           </div>
 
           {/* Mobile: Logo + Menu Button */}
           <div className="lg:hidden flex items-center space-x-4">
             {/* Mobile Logo */}
             <Link href="/" className="relative group">
-              <div className="w-10 h-10 bg-gradient-to-br from-cyan-400/30 to-blue-500/30 rounded-lg border-2 border-cyan-400/50 flex items-center justify-center backdrop-blur-sm">
-                <span className="text-cyan-300 font-black text-lg">N</span>
+              <div className="relative w-14 h-14 rounded-full overflow-hidden flex items-center justify-center bg-white/10 backdrop-blur-sm border-2 border-cyan-400/30 shadow-md">
+                <Image
+                  src="/images/logo.webp"
+                  alt="NaidenovART Logo"
+                  width={56}
+                  height={56}
+                  className="object-cover w-full h-full"
+                  priority
+                />
               </div>
             </Link>
 
