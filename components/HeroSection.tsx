@@ -388,22 +388,6 @@ export default function HeroSection() {
           <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/40 via-blue-500/40 to-purple-500/40 rounded-3xl blur-3xl transform scale-110 animate-pulse" style={{ animationDuration: '5s' }} />
           <div className="absolute inset-0 bg-gradient-to-tl from-purple-500/30 via-pink-500/30 to-blue-500/30 rounded-3xl blur-2xl transform scale-105 animate-pulse" style={{ animationDuration: '7s', animationDelay: '2s' }} />
           
-          {/* Floating Car1 Image - Animated */}
-          <div className="absolute -top-20 -left-20 z-[30] animate-float">
-            <div className="relative w-48 h-48 lg:w-64 lg:h-64">
-              <div className="absolute inset-0 bg-gradient-to-br from-cyan-400/30 to-blue-500/30 rounded-full blur-2xl animate-pulse" />
-              <div className="relative bg-gradient-to-br from-[#1c1ca0]/70 to-[#0f0c29]/70 backdrop-blur-lg p-3 rounded-2xl border-2 border-cyan-400/60 shadow-[0_0_40px_rgba(34,211,238,0.5)] hover:scale-110 transition-all duration-500">
-                <Image
-                  src="/images/car1.png"
-                  alt="NaidenovART - Car Illustration 1"
-                  width={240}
-                  height={240}
-                  className="object-contain drop-shadow-[0_0_20px_rgba(34,211,238,0.6)]"
-                />
-              </div>
-            </div>
-          </div>
-          
           {/* Main Featured Image Container - Cosmic Frame */}
           <div className="relative bg-gradient-to-br from-[#1c1ca0]/80 to-[#0f0c29]/80 backdrop-blur-xl p-6 lg:p-8 rounded-3xl border-2 border-cyan-400/50 shadow-[0_0_50px_rgba(34,211,238,0.4)] hover:shadow-[0_0_80px_rgba(34,211,238,0.6)] transition-all duration-500 group">
             {/* Featured Car Artwork with Cosmic Border */}
