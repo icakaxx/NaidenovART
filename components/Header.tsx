@@ -1,7 +1,7 @@
 "use client";
 
-import Link from "next/link";
 import { useState } from "react";
+import Link from "next/link";
 
 interface NavItem {
   name: string;
@@ -50,183 +50,118 @@ export default function Header() {
     },
   ];
 
+  const toggleMenu = () => {
+    setMobileMenuOpen(!mobileMenuOpen);
+  };
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-[100] overflow-visible">
-      {/* Cosmic Background */}
-      <div className="absolute inset-0 bg-gradient-to-r from-[#0f0c29] via-[#1c1ca0] to-[#24243e] opacity-95" />
-      
-      {/* Nebula-like glow effects */}
-      <div className="absolute top-0 left-1/4 w-64 h-64 bg-purple-500/20 rounded-full blur-3xl" />
-      <div className="absolute top-0 right-1/4 w-64 h-64 bg-blue-500/20 rounded-full blur-3xl" />
-      
-      {/* Border glow */}
-      <div className="absolute bottom-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-blue-400/50 to-transparent" />
-      <nav className="relative container mx-auto px-6 py-6">
-        <div className="flex items-center w-full">
-          {/* Left Side: Картини + Проекти */}
-          <div className="hidden lg:flex items-center flex-1">
-            {/* Spacing */}
-            <div className="flex-1" />
+    <nav className="w-full px-6 py-6 md:px-12 md:py-8 flex justify-between items-center relative z-50" id="navbar">
+      <Link href="/" className="flex items-center gap-4 cursor-pointer group">
+        <div className="text-2xl md:text-3xl font-bold tracking-widest uppercase font-serif text-white group-hover:text-blue-400 transition-colors">
+          NaidenovART
+        </div>
+      </Link>
 
-            {/* First 2 Tabs centered in available space */}
-            <div className="flex items-center space-x-12" style={{ marginLeft: '-6rem' }}>
-              {navItems.slice(0, 2).map((item) => (
-                <div
-                  key={item.name}
-                  className="relative"
-                  onMouseEnter={() => item.subtabs && setActiveDropdown(item.name)}
-                  onMouseLeave={() => setActiveDropdown(null)}
-                >
-                  <Link
-                    href={item.href}
-                    className="relative text-white text-base font-bold tracking-wider hover:text-cyan-300 transition-all duration-300 group block py-2 px-4"
-                  >
-                    <span className="relative z-10">{item.name}</span>
-                    <span className="absolute inset-0 bg-blue-500/0 group-hover:bg-blue-500/20 rounded-lg blur-sm transition-all duration-300" />
-                  </Link>
-
-                  {/* Dropdown Menu */}
-                  {item.subtabs && activeDropdown === item.name && (
-                    <div className="absolute top-full left-0 mt-2 min-w-[220px] bg-gradient-to-br from-[#1c1ca0]/95 to-[#0f0c29]/95 backdrop-blur-lg rounded-xl shadow-2xl border border-blue-400/30 overflow-hidden z-[100] animate-fadeIn">
-                      <div className="py-2">
-                        {item.subtabs.map((subtab) => (
-                          <Link
-                            key={subtab.name}
-                            href={subtab.href}
-                            className="block px-4 py-3 text-white text-sm font-medium hover:text-cyan-300 hover:bg-blue-500/20 transition-all duration-200"
-                          >
-                            {subtab.name}
-                          </Link>
-                        ))}
-                      </div>
-                    </div>
-                  )}
-                </div>
-              ))}
-            </div>
-
-            {/* Spacing before center */}
-            <div className="flex-1" />
-          </div>
-
-          {/* Center Logo - Cosmic Style */}
-          <Link 
-            href="/" 
-            className="absolute left-1/2 transform -translate-x-1/2 text-2xl lg:text-3xl font-black tracking-wider group z-10"
+      {/* Desktop Menu */}
+      <div className="hidden md:flex space-x-8 lg:space-x-12 text-sm font-medium tracking-widest uppercase">
+        {navItems.map((item) => (
+          <div
+            key={item.name}
+            className="relative"
+            onMouseEnter={() => item.subtabs && setActiveDropdown(item.name)}
+            onMouseLeave={() => setActiveDropdown(null)}
           >
-            <span className="relative z-10 bg-gradient-to-r from-cyan-300 via-blue-300 to-purple-300 bg-clip-text text-transparent drop-shadow-[0_0_15px_rgba(147,197,253,0.8)]">
-              NAIDENOVART
-            </span>
-            {/* Glow effect */}
-            <span className="absolute inset-0 bg-gradient-to-r from-cyan-400/30 via-blue-400/30 to-purple-400/30 blur-xl group-hover:blur-2xl transition-all duration-300" />
-          </Link>
-
-          {/* Right Side: Улична кауза + Дрехи + За мен */}
-          <div className="hidden lg:flex items-center flex-1">
-            {/* Spacing after center - reduced to move tabs left */}
-            <div className="flex-1 mr-16" />
-
-            {/* Last 3 Tabs centered in available space */}
-            <div className="flex items-center space-x-12" style={{ marginLeft: '-48px' }}>
-              {navItems.slice(2).map((item) => (
-                <div
-                  key={item.name}
-                  className="relative"
-                  onMouseEnter={() => item.subtabs && setActiveDropdown(item.name)}
-                  onMouseLeave={() => setActiveDropdown(null)}
-                >
-                  <Link
-                    href={item.href}
-                    className="relative text-white text-base font-bold tracking-wider hover:text-cyan-300 transition-all duration-300 group block py-2 px-4"
-                  >
-                    <span className="relative z-10">{item.name}</span>
-                    <span className="absolute inset-0 bg-blue-500/0 group-hover:bg-blue-500/20 rounded-lg blur-sm transition-all duration-300" />
-                  </Link>
-
-                  {/* Dropdown Menu */}
-                  {item.subtabs && activeDropdown === item.name && (
-                    <div className="absolute top-full right-0 mt-2 min-w-[220px] bg-gradient-to-br from-[#1c1ca0]/95 to-[#0f0c29]/95 backdrop-blur-lg rounded-xl shadow-2xl border border-blue-400/30 overflow-hidden z-[100] animate-fadeIn">
-                      <div className="py-2">
-                        {item.subtabs.map((subtab) => (
-                          <Link
-                            key={subtab.name}
-                            href={subtab.href}
-                            className="block px-4 py-3 text-white text-sm font-medium hover:text-cyan-300 hover:bg-blue-500/20 transition-all duration-200"
-                          >
-                            {subtab.name}
-                          </Link>
-                        ))}
-                      </div>
-                    </div>
-                  )}
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Mobile: Menu Button */}
-          <div className="lg:hidden flex items-center">
-            {/* Mobile Menu Button - Cosmic Style */}
-            <button
-              className="text-white p-2 hover:bg-blue-500/30 rounded-lg transition-all duration-300 backdrop-blur-sm border border-blue-400/30"
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              aria-label="Toggle menu"
+            <Link
+              href={item.href}
+              className="relative group overflow-hidden pb-1 block"
             >
-            <svg
-              className="w-6 h-6 drop-shadow-[0_0_8px_rgba(147,197,253,0.8)]"
-              fill="none"
+              <span className="group-hover:-translate-y-full transition-transform duration-300 block">
+                {item.name}
+              </span>
+              <span className="absolute top-0 left-0 translate-y-full group-hover:translate-y-0 transition-transform duration-300 text-blue-400">
+                {item.name}
+              </span>
+            </Link>
+
+            {/* Dropdown Menu */}
+            {item.subtabs && activeDropdown === item.name && (
+              <div className="absolute top-full left-0 mt-2 bg-black/95 backdrop-blur-sm border border-white/10 rounded-lg shadow-xl py-2 min-w-[200px] z-[100] animate-fadeIn">
+                {item.subtabs.map((subtab) => (
+                  <Link
+                    key={subtab.name}
+                    href={subtab.href}
+                    className="block px-4 py-2 text-sm text-white/80 hover:text-blue-400 hover:bg-white/5 transition-colors"
+                  >
+                    {subtab.name}
+                  </Link>
+                ))}
+              </div>
+            )}
+          </div>
+        ))}
+      </div>
+
+      {/* Mobile Menu Button */}
+      <button
+        className="md:hidden text-white hover:text-blue-400 transition-colors focus:outline-none"
+        onClick={toggleMenu}
+      >
+        <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth="1.5"
+            d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+          />
+        </svg>
+      </button>
+
+      {/* Mobile Menu Overlay */}
+      <div
+        className={`fixed inset-0 bg-black/95 z-50 transform transition-transform duration-500 flex flex-col justify-center items-center space-y-8 ${
+          mobileMenuOpen ? "translate-x-0" : "translate-x-full"
+        }`}
+      >
+        <button
+          onClick={toggleMenu}
+          className="absolute top-8 right-8 text-white/50 hover:text-white"
+        >
+          <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path
               strokeLinecap="round"
               strokeLinejoin="round"
-              strokeWidth="2"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              {mobileMenuOpen ? (
-                <path d="M6 18L18 6M6 6l12 12" />
-              ) : (
-                <path d="M4 6h16M4 12h16M4 18h16" />
-              )}
-            </svg>
-            </button>
-          </div>
-        </div>
+              strokeWidth="1.5"
+              d="M6 18L18 6M6 6l12 12"
+            />
+          </svg>
+        </button>
 
-        {/* Mobile Menu - Cosmic Style */}
-        {mobileMenuOpen && (
-          <div className="lg:hidden mt-6 pb-6 space-y-2 bg-gradient-to-br from-[#1c1ca0]/95 to-[#0f0c29]/95 backdrop-blur-lg rounded-xl p-6 shadow-2xl border border-blue-400/30">
-            {navItems.map((item) => (
-              <div key={item.name}>
-                <Link
-                  href={item.href}
-                  className="block text-white text-sm font-bold tracking-wider hover:text-cyan-300 transition-colors py-3 px-4 rounded-lg hover:bg-blue-500/20"
-                  onClick={() => {
-                    if (!item.subtabs) setMobileMenuOpen(false);
-                  }}
-                >
-                  {item.name}
-                </Link>
-                {/* Mobile Subtabs */}
-                {item.subtabs && (
-                  <div className="ml-4 mt-1 space-y-1 border-l-2 border-blue-400/30 pl-4">
-                    {item.subtabs.map((subtab) => (
-                      <Link
-                        key={subtab.name}
-                        href={subtab.href}
-                        className="block text-blue-200 text-xs font-medium hover:text-cyan-300 transition-colors py-2 px-4 rounded-lg hover:bg-blue-500/10"
-                        onClick={() => setMobileMenuOpen(false)}
-                      >
-                        {subtab.name}
-                      </Link>
-                    ))}
-                  </div>
-                )}
+        {navItems.map((item) => (
+          <div key={item.name} className="w-full px-8">
+            <Link
+              href={item.href}
+              onClick={toggleMenu}
+              className="text-2xl uppercase tracking-widest hover:text-blue-400 transition-colors font-serif block mb-2"
+            >
+              {item.name}
+            </Link>
+            {item.subtabs && (
+              <div className="ml-4 mt-2 space-y-2 border-l-2 border-blue-400/30 pl-4">
+                {item.subtabs.map((subtab) => (
+                  <Link
+                    key={subtab.name}
+                    href={subtab.href}
+                    onClick={toggleMenu}
+                    className="block text-lg text-white/70 hover:text-blue-400 transition-colors"
+                  >
+                    {subtab.name}
+                  </Link>
+                ))}
               </div>
-            ))}
+            )}
           </div>
-        )}
-      </nav>
-    </header>
+        ))}
+      </div>
+    </nav>
   );
 }
-
