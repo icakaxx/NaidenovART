@@ -15,6 +15,11 @@ export default function Lightbox({ src, alt, isOpen, onClose }: LightboxProps) {
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const [isDragging, setIsDragging] = useState(false);
   const [startPos, setStartPos] = useState({ x: 0, y: 0 });
+  
+  // Pinch zoom state
+  const [startDist, setStartDist] = useState(0);
+  const [startScale, setStartScale] = useState(1);
+
   const containerRef = useRef<HTMLDivElement>(null);
 
   // Lock body scroll when open
@@ -23,7 +28,6 @@ export default function Lightbox({ src, alt, isOpen, onClose }: LightboxProps) {
       setScale(1);
       setPosition({ x: 0, y: 0 });
       document.body.style.overflow = "hidden";
-      // Add touch-action: none to prevent mobile scroll bleed
       document.body.style.touchAction = "none";
     } else {
       document.body.style.overflow = "";
@@ -44,8 +48,18 @@ export default function Lightbox({ src, alt, isOpen, onClose }: LightboxProps) {
 
   const handleZoomOut = (e?: React.MouseEvent | React.TouchEvent) => {
     e?.stopPropagation();
-    setScale((prev) => Math.max(prev - 0.5, 1));
-    if (scale <= 1.5) setPosition({ x: 0, y: 0 });
+    setScale((prev) => {
+      const next = Math.max(prev - 0.5, 1);
+      if (next <= 1.5) setPosition({ x: 0, y: 0 });
+      return next;
+    });
+  };
+
+  // Helper to get distance between two touch points
+  const getDistance = (touches: React.TouchList) => {
+    const dx = touches[0].clientX - touches[1].clientX;
+    const dy = touches[0].clientY - touches[1].clientY;
+    return Math.hypot(dx, dy);
   };
 
   // Mouse handlers
@@ -73,9 +87,14 @@ export default function Lightbox({ src, alt, isOpen, onClose }: LightboxProps) {
 
   // Touch handlers for mobile
   const handleTouchStart = (e: React.TouchEvent) => {
-    if (scale > 1 && e.touches.length === 1) {
-      // e.preventDefault() here might block click events, so be careful.
-      // But for dragging, we usually want to stop scrolling.
+    if (e.touches.length === 2) {
+      // Pinch start
+      e.preventDefault();
+      const dist = getDistance(e.touches);
+      setStartDist(dist);
+      setStartScale(scale);
+    } else if (e.touches.length === 1 && scale > 1) {
+      // Drag start
       setIsDragging(true);
       setStartPos({
         x: e.touches[0].clientX - position.x,
@@ -85,8 +104,17 @@ export default function Lightbox({ src, alt, isOpen, onClose }: LightboxProps) {
   };
 
   const handleTouchMove = (e: React.TouchEvent) => {
-    if (isDragging && scale > 1 && e.touches.length === 1) {
-      // Important: prevent default to stop page scroll
+    if (e.touches.length === 2) {
+      // Pinch move
+      e.preventDefault();
+      const dist = getDistance(e.touches);
+      if (startDist > 0) {
+        const zoomFactor = dist / startDist;
+        const newScale = Math.min(Math.max(startScale * zoomFactor, 1), 4);
+        setScale(newScale);
+      }
+    } else if (isDragging && scale > 1 && e.touches.length === 1) {
+      // Drag move
       e.preventDefault();
       setPosition({
         x: e.touches[0].clientX - startPos.x,
@@ -95,8 +123,18 @@ export default function Lightbox({ src, alt, isOpen, onClose }: LightboxProps) {
     }
   };
 
-  const handleTouchEnd = () => {
-    setIsDragging(false);
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    if (e.touches.length < 2) {
+      setStartDist(0);
+    }
+    if (e.touches.length === 0) {
+      setIsDragging(false);
+      // Snap back if scale is less than 1
+      if (scale < 1) {
+        setScale(1);
+        setPosition({ x: 0, y: 0 });
+      }
+    }
   };
 
   return (
@@ -151,7 +189,7 @@ export default function Lightbox({ src, alt, isOpen, onClose }: LightboxProps) {
         onClick={(e) => e.stopPropagation()} // Prevent close when clicking image area
       >
         <div
-          className="relative transition-transform duration-200 ease-out"
+          className="relative transition-transform duration-100 ease-out origin-center"
           style={{
             transform: `translate(${position.x}px, ${position.y}px) scale(${scale})`,
             width: "100%",
@@ -159,7 +197,7 @@ export default function Lightbox({ src, alt, isOpen, onClose }: LightboxProps) {
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
-            touchAction: "none", // Ensure touches don't bubble to scroll
+            touchAction: "none",
           }}
         >
           <div className="relative w-full h-full max-w-[95vw] max-h-[90vh]">
@@ -177,3 +215,4 @@ export default function Lightbox({ src, alt, isOpen, onClose }: LightboxProps) {
     </div>
   );
 }
+

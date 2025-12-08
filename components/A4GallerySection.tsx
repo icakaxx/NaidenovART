@@ -29,7 +29,6 @@ const images = [
 ];
 
 export default function A4GallerySection({ copy }: A4GallerySectionProps) {
-  const [ratios, setRatios] = useState<number[]>(images.map(() => 1));
   const [lightboxImage, setLightboxImage] = useState<{ src: string; alt: string } | null>(null);
 
   return (
@@ -66,7 +65,7 @@ export default function A4GallerySection({ copy }: A4GallerySectionProps) {
           </div>
         </div>
 
-        <div className="flex flex-wrap gap-3 md:gap-4 justify-center md:justify-start">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
           {images.map((image, idx) => {
             return (
               <div
@@ -78,9 +77,8 @@ export default function A4GallerySection({ copy }: A4GallerySectionProps) {
                   hover:-translate-y-1 hover:shadow-[0_25px_60px_-25px_rgba(0,0,0,0.75)]
                   group
                   cursor-zoom-in
-                  h-64 md:h-56
+                  h-64 md:h-80
                 `}
-                style={{ aspectRatio: ratios[idx] || 1 }}
                 onClick={() => setLightboxImage(image)}
               >
                 <div
@@ -93,16 +91,8 @@ export default function A4GallerySection({ copy }: A4GallerySectionProps) {
                   alt={image.alt}
                   fill
                   className="object-contain p-2 transition-transform duration-500 ease-out group-hover:scale-105"
-                  sizes="(max-width: 768px) 100vw, 33vw"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                   priority={idx < 3}
-                  onLoadingComplete={({ naturalWidth, naturalHeight }) => {
-                    const ratio = naturalWidth / naturalHeight;
-                    setRatios((prev) => {
-                      const clone = [...prev];
-                      clone[idx] = ratio || 1;
-                      return clone;
-                    });
-                  }}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-black/0 to-black/40 opacity-0 group-hover:opacity-100 transition duration-500"></div>
                 <div className="absolute bottom-3 left-3 text-xs tracking-widest text-white/80 uppercase bg-black/40 px-3 py-1 rounded-full backdrop-blur">
