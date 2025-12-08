@@ -3,7 +3,23 @@
 import { useEffect, useRef } from "react";
 import Link from "next/link";
 
-export default function PortfolioSection() {
+interface CardCopy {
+  title: string;
+  category: string;
+}
+
+interface PortfolioCopy {
+  galleryLabel: string;
+  title: string;
+  viewAll: string;
+  cards: ReadonlyArray<CardCopy>;
+}
+
+interface PortfolioSectionProps {
+  copy: PortfolioCopy;
+}
+
+export default function PortfolioSection({ copy }: PortfolioSectionProps) {
   const observerRef = useRef<IntersectionObserver | null>(null);
 
   useEffect(() => {
@@ -41,17 +57,17 @@ export default function PortfolioSection() {
         <div className="flex flex-col md:flex-row justify-between items-end mb-12">
           <div className="animate-on-scroll opacity-0 translate-y-8 transition-all duration-700">
             <h3 className="text-blue-400 uppercase tracking-widest text-sm font-semibold mb-2">
-              Галерия
+              {copy.galleryLabel}
             </h3>
             <h2 className="text-4xl md:text-5xl font-serif font-bold text-white">
-              Избрани творби
+              {copy.title}
             </h2>
           </div>
           <Link
             href="#"
             className="hidden md:block text-white/70 hover:text-blue-400 transition-colors border-b border-white/20 pb-1 hover:border-blue-400 mt-4 md:mt-0"
           >
-            Разгледай всички
+            {copy.viewAll}
           </Link>
         </div>
 
@@ -65,9 +81,9 @@ export default function PortfolioSection() {
             </div>
             <div className="absolute inset-0 bg-black/20 group-hover:bg-black/0 transition-colors duration-500"></div>
             <div className="absolute bottom-0 left-0 w-full p-6 bg-gradient-to-t from-black/80 to-transparent translate-y-4 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-300">
-              <h4 className="text-xl font-bold text-white">Абстракция &quot;Начало&quot;</h4>
+              <h4 className="text-xl font-bold text-white">{copy.cards[0]?.title}</h4>
               <p className="text-blue-400 text-xs uppercase tracking-wider mt-1">
-                Картини
+                {copy.cards[0]?.category}
               </p>
             </div>
           </div>
@@ -80,9 +96,9 @@ export default function PortfolioSection() {
             </div>
             <div className="absolute inset-0 bg-black/20 group-hover:bg-black/0 transition-colors duration-500"></div>
             <div className="absolute bottom-0 left-0 w-full p-6 bg-gradient-to-t from-black/80 to-transparent translate-y-4 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-300">
-              <h4 className="text-xl font-bold text-white">Уличен Проект София</h4>
+              <h4 className="text-xl font-bold text-white">{copy.cards[1]?.title}</h4>
               <p className="text-blue-400 text-xs uppercase tracking-wider mt-1">
-                Улична кауза
+                {copy.cards[1]?.category}
               </p>
             </div>
           </div>
@@ -95,9 +111,9 @@ export default function PortfolioSection() {
             </div>
             <div className="absolute inset-0 bg-black/20 group-hover:bg-black/0 transition-colors duration-500"></div>
             <div className="absolute bottom-0 left-0 w-full p-6 bg-gradient-to-t from-black/80 to-transparent translate-y-4 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-300">
-              <h4 className="text-xl font-bold text-white">Колекция &quot;Зима&quot;</h4>
+              <h4 className="text-xl font-bold text-white">{copy.cards[2]?.title}</h4>
               <p className="text-blue-400 text-xs uppercase tracking-wider mt-1">
-                Дрехи
+                {copy.cards[2]?.category}
               </p>
             </div>
           </div>
@@ -108,7 +124,7 @@ export default function PortfolioSection() {
             href="#"
             className="text-white hover:text-blue-400 transition-colors border-b border-white/30 pb-1 hover:border-blue-400"
           >
-            Разгледай всички
+            {copy.viewAll}
           </Link>
         </div>
       </div>

@@ -2,18 +2,37 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import Header from "./Header";
+import Header, { NavItem } from "./Header";
+import type { Language } from "@/types/language";
 
-export default function HeroSection() {
+interface HeroCopy {
+  tagline: string;
+  description: string;
+  cta: string;
+}
+
+interface HeroSectionProps {
+  lang: Language;
+  navItems: NavItem[];
+  copy: HeroCopy;
+  onToggleLang: () => void;
+}
+
+export default function HeroSection({
+  lang,
+  navItems,
+  copy,
+  onToggleLang,
+}: HeroSectionProps) {
   return (
-    <header className="relative h-screen w-full hero-bg">
+    <header className="relative h-screen w-full hero-bg" id="top">
       {/* Dark Overlay for readability */}
       <div className="absolute inset-0 bg-black/50"></div>
 
       {/* Content Wrapper */}
       <div className="relative z-10 h-full flex flex-col justify-between">
         {/* Navigation */}
-        <Header />
+        <Header lang={lang} navItems={navItems} onToggleLang={onToggleLang} />
         {/* Main Hero Content */}
         <div className="flex flex-col md:flex-row items-center justify-center w-full max-w-7xl mx-auto px-6 mb-20 flex-grow gap-12 md:gap-32">
           {/* Left Side: Large Logo */}
@@ -39,11 +58,11 @@ export default function HeroSection() {
             </div>
 
             <h2 className="text-2xl md:text-4xl font-light tracking-[0.2em] mb-10 uppercase animate-fade-in-up delay-100 text-gray-100">
-              Рисуване по всичко
+              {copy.tagline}
             </h2>
 
             <p className="max-w-xl text-gray-300 text-lg md:text-xl mb-12 font-light leading-relaxed animate-fade-in-up delay-200">
-              От платното до уличните стени и текстила. Изкуството е начин на живот, а не просто хоби.
+              {copy.description}
             </p>
 
             <Link
@@ -51,7 +70,7 @@ export default function HeroSection() {
               className="group relative px-12 py-5 bg-transparent border border-white text-white overflow-hidden transition-all duration-300 animate-fade-in-up delay-300"
             >
               <span className="relative z-10 font-bold text-lg uppercase tracking-widest group-hover:text-black transition-colors">
-                Виж портфолио
+                {copy.cta}
               </span>
               <div className="absolute inset-0 bg-white transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left ease-out duration-300"></div>
             </Link>

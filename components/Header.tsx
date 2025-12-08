@@ -2,53 +2,24 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import LanguageToggle from "./LanguageToggle";
+import type { Language } from "@/types/language";
 
-interface NavItem {
+export interface NavItem {
   name: string;
   href: string;
   subtabs?: { name: string; href: string }[];
 }
 
-export default function Header() {
+interface HeaderProps {
+  lang: Language;
+  navItems: NavItem[];
+  onToggleLang: () => void;
+}
+
+export default function Header({ lang, navItems, onToggleLang }: HeaderProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
-
-  const navItems: NavItem[] = [
-    {
-      name: "Картини",
-      href: "#kartini",
-      subtabs: [
-        { name: "А3 формат (30х40 см.)", href: "#a3" },
-        { name: "А4 формат (29х19см.)", href: "#a4" },
-      ],
-    },
-    {
-      name: "Проекти",
-      href: "#proekti",
-      subtabs: [
-        { name: "Обекти", href: "#obekti" },
-        { name: "Автомобили", href: "#avtomobili" },
-        { name: "Каски", href: "#kaski" },
-        { name: "Лаптопи", href: "#laptopi" },
-      ],
-    },
-    {
-      name: "Улична кауза",
-      href: "#ulichna-kauza",
-      subtabs: [
-        { name: "Послания", href: "#poslaniya" },
-        { name: "Награди", href: "#nagradi" },
-      ],
-    },
-    {
-      name: "Дрехи",
-      href: "#drehi",
-    },
-    {
-      name: "За мен",
-      href: "#za-men",
-    },
-  ];
 
   const toggleMenu = () => {
     setMobileMenuOpen(!mobileMenuOpen);
@@ -85,7 +56,11 @@ export default function Header() {
 
             {/* Dropdown Menu */}
             {item.subtabs && activeDropdown === item.name && (
-              <div className="absolute top-full left-0 mt-2 bg-black/95 backdrop-blur-sm border border-white/10 rounded-lg shadow-xl py-2 min-w-[200px] z-[100] animate-fadeIn">
+              <div
+                className="absolute top-full left-0 pt-2 bg-black/95 backdrop-blur-sm border border-white/10 rounded-lg shadow-xl py-2 min-w-[200px] z-[100] animate-fadeIn"
+                onMouseEnter={() => setActiveDropdown(item.name)}
+                onMouseLeave={() => setActiveDropdown(null)}
+              >
                 {item.subtabs.map((subtab) => (
                   <Link
                     key={subtab.name}
@@ -99,6 +74,10 @@ export default function Header() {
             )}
           </div>
         ))}
+      </div>
+
+      <div className="hidden md:block">
+        <LanguageToggle lang={lang} onToggle={onToggleLang} />
       </div>
 
       {/* Mobile Menu Button */}
@@ -161,6 +140,10 @@ export default function Header() {
             )}
           </div>
         ))}
+
+        <div className="mt-8">
+          <LanguageToggle lang={lang} onToggle={onToggleLang} />
+        </div>
       </div>
     </nav>
   );
