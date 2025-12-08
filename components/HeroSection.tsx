@@ -25,12 +25,12 @@ export default function HeroSection({
   onToggleLang,
 }: HeroSectionProps) {
   return (
-    <header className="relative h-screen w-full hero-bg" id="top">
+    <header className="relative min-h-screen w-full hero-bg" id="top">
       {/* Dark Overlay for readability */}
       <div className="absolute inset-0 bg-black/50"></div>
 
       {/* Content Wrapper */}
-      <div className="relative z-10 h-full flex flex-col justify-between">
+      <div className="relative z-10 h-full flex flex-col justify-between min-h-screen">
         {/* Navigation */}
         <Header lang={lang} navItems={navItems} onToggleLang={onToggleLang} />
         {/* Main Hero Content */}
@@ -42,8 +42,7 @@ export default function HeroSection({
               alt="NaidenovART Logo"
               width={845}
               height={845}
-              className="max-w-[650px] lg:max-w-[845px] w-auto h-auto object-contain drop-shadow-2xl"
-              style={{ transform: 'scale(1.3)' }}
+              className="max-w-[85vw] md:max-w-[650px] lg:max-w-[845px] w-auto h-auto object-contain drop-shadow-2xl md:scale-125 transition-transform"
               priority
             />
           </div>

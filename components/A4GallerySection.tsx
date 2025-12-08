@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useState } from "react";
+import Lightbox from "./Lightbox";
 
 interface A4GalleryCopy {
   title: string;
@@ -29,6 +30,7 @@ const images = [
 
 export default function A4GallerySection({ copy }: A4GallerySectionProps) {
   const [ratios, setRatios] = useState<number[]>(images.map(() => 1));
+  const [lightboxImage, setLightboxImage] = useState<{ src: string; alt: string } | null>(null);
 
   return (
     <section
@@ -64,7 +66,7 @@ export default function A4GallerySection({ copy }: A4GallerySectionProps) {
           </div>
         </div>
 
-        <div className="flex flex-wrap gap-3 md:gap-4 justify-start">
+        <div className="flex flex-wrap gap-3 md:gap-4 justify-center md:justify-start">
           {images.map((image, idx) => {
             return (
               <div
@@ -75,9 +77,11 @@ export default function A4GallerySection({ copy }: A4GallerySectionProps) {
                   transition duration-500 ease-out
                   hover:-translate-y-1 hover:shadow-[0_25px_60px_-25px_rgba(0,0,0,0.75)]
                   group
-                  h-44 sm:h-52 md:h-56
+                  cursor-zoom-in
+                  h-64 md:h-56
                 `}
                 style={{ aspectRatio: ratios[idx] || 1 }}
+                onClick={() => setLightboxImage(image)}
               >
                 <div
                   className="absolute inset-0 scale-110 blur-xl opacity-30"
@@ -109,7 +113,13 @@ export default function A4GallerySection({ copy }: A4GallerySectionProps) {
           })}
         </div>
       </div>
+
+      <Lightbox
+        src={lightboxImage?.src ?? ""}
+        alt={lightboxImage?.alt ?? ""}
+        isOpen={!!lightboxImage}
+        onClose={() => setLightboxImage(null)}
+      />
     </section>
   );
 }
-
