@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import Image from "next/image";
 
 interface LightboxProps {
@@ -15,36 +15,43 @@ export default function Lightbox({ src, alt, isOpen, onClose }: LightboxProps) {
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const [isDragging, setIsDragging] = useState(false);
   const [startPos, setStartPos] = useState({ x: 0, y: 0 });
+  const containerRef = useRef<HTMLDivElement>(null);
 
-  // Reset zoom/pan when opening new image
+  // Lock body scroll when open
   useEffect(() => {
     if (isOpen) {
       setScale(1);
       setPosition({ x: 0, y: 0 });
       document.body.style.overflow = "hidden";
+      // Add touch-action: none to prevent mobile scroll bleed
+      document.body.style.touchAction = "none";
     } else {
       document.body.style.overflow = "";
+      document.body.style.touchAction = "";
     }
     return () => {
       document.body.style.overflow = "";
+      document.body.style.touchAction = "";
     };
   }, [isOpen]);
 
   if (!isOpen) return null;
 
-  const handleZoomIn = (e?: React.MouseEvent) => {
+  const handleZoomIn = (e?: React.MouseEvent | React.TouchEvent) => {
     e?.stopPropagation();
     setScale((prev) => Math.min(prev + 0.5, 3));
   };
 
-  const handleZoomOut = (e?: React.MouseEvent) => {
+  const handleZoomOut = (e?: React.MouseEvent | React.TouchEvent) => {
     e?.stopPropagation();
     setScale((prev) => Math.max(prev - 0.5, 1));
-    if (scale <= 1.5) setPosition({ x: 0, y: 0 }); // Reset position if zoomed out
+    if (scale <= 1.5) setPosition({ x: 0, y: 0 });
   };
 
+  // Mouse handlers
   const handleMouseDown = (e: React.MouseEvent) => {
     if (scale > 1) {
+      e.preventDefault();
       setIsDragging(true);
       setStartPos({ x: e.clientX - position.x, y: e.clientY - position.y });
     }
@@ -52,6 +59,7 @@ export default function Lightbox({ src, alt, isOpen, onClose }: LightboxProps) {
 
   const handleMouseMove = (e: React.MouseEvent) => {
     if (isDragging && scale > 1) {
+      e.preventDefault();
       setPosition({
         x: e.clientX - startPos.x,
         y: e.clientY - startPos.y,
@@ -63,16 +71,45 @@ export default function Lightbox({ src, alt, isOpen, onClose }: LightboxProps) {
     setIsDragging(false);
   };
 
+  // Touch handlers for mobile
+  const handleTouchStart = (e: React.TouchEvent) => {
+    if (scale > 1 && e.touches.length === 1) {
+      // e.preventDefault() here might block click events, so be careful.
+      // But for dragging, we usually want to stop scrolling.
+      setIsDragging(true);
+      setStartPos({
+        x: e.touches[0].clientX - position.x,
+        y: e.touches[0].clientY - position.y,
+      });
+    }
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    if (isDragging && scale > 1 && e.touches.length === 1) {
+      // Important: prevent default to stop page scroll
+      e.preventDefault();
+      setPosition({
+        x: e.touches[0].clientX - startPos.x,
+        y: e.touches[0].clientY - startPos.y,
+      });
+    }
+  };
+
+  const handleTouchEnd = () => {
+    setIsDragging(false);
+  };
+
   return (
     <div
-      className="fixed inset-0 z-[100] flex items-center justify-center bg-black/95 backdrop-blur-md"
+      className="fixed inset-0 z-[100] flex items-center justify-center bg-black/95 backdrop-blur-md touch-none"
       onClick={onClose}
+      ref={containerRef}
     >
       {/* Controls */}
       <div className="absolute top-4 right-4 flex gap-4 z-[110]">
         <button
           onClick={handleZoomIn}
-          className="p-3 bg-white/10 hover:bg-white/20 rounded-full text-white backdrop-blur transition-colors"
+          className="p-3 bg-white/10 hover:bg-white/20 rounded-full text-white backdrop-blur transition-colors active:scale-95"
           aria-label="Zoom in"
         >
           <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -81,7 +118,7 @@ export default function Lightbox({ src, alt, isOpen, onClose }: LightboxProps) {
         </button>
         <button
           onClick={handleZoomOut}
-          className="p-3 bg-white/10 hover:bg-white/20 rounded-full text-white backdrop-blur transition-colors"
+          className="p-3 bg-white/10 hover:bg-white/20 rounded-full text-white backdrop-blur transition-colors active:scale-95"
           aria-label="Zoom out"
           disabled={scale <= 1}
         >
@@ -91,7 +128,7 @@ export default function Lightbox({ src, alt, isOpen, onClose }: LightboxProps) {
         </button>
         <button
           onClick={onClose}
-          className="p-3 bg-white/10 hover:bg-white/20 rounded-full text-white backdrop-blur transition-colors"
+          className="p-3 bg-white/10 hover:bg-white/20 rounded-full text-white backdrop-blur transition-colors active:scale-95"
           aria-label="Close"
         >
           <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -102,11 +139,15 @@ export default function Lightbox({ src, alt, isOpen, onClose }: LightboxProps) {
 
       {/* Image Container */}
       <div
-        className="relative w-full h-full flex items-center justify-center overflow-hidden cursor-move"
+        className="relative w-full h-full flex items-center justify-center overflow-hidden"
+        style={{ cursor: scale > 1 ? "grab" : "default" }}
         onMouseDown={handleMouseDown}
         onMouseMove={handleMouseMove}
         onMouseUp={handleMouseUp}
         onMouseLeave={handleMouseUp}
+        onTouchStart={handleTouchStart}
+        onTouchMove={handleTouchMove}
+        onTouchEnd={handleTouchEnd}
         onClick={(e) => e.stopPropagation()} // Prevent close when clicking image area
       >
         <div
@@ -118,9 +159,10 @@ export default function Lightbox({ src, alt, isOpen, onClose }: LightboxProps) {
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
+            touchAction: "none", // Ensure touches don't bubble to scroll
           }}
         >
-          <div className="relative w-full h-full max-w-[90vw] max-h-[90vh]">
+          <div className="relative w-full h-full max-w-[95vw] max-h-[90vh]">
             <Image
               src={src}
               alt={alt}
@@ -135,4 +177,3 @@ export default function Lightbox({ src, alt, isOpen, onClose }: LightboxProps) {
     </div>
   );
 }
-
