@@ -97,13 +97,13 @@ export default function Header({ lang, navItems, onToggleLang }: HeaderProps) {
 
       {/* Mobile Menu Overlay */}
       <div
-        className={`fixed inset-0 bg-black/95 z-50 transform transition-transform duration-500 flex flex-col justify-center items-center space-y-8 ${
+        className={`fixed inset-0 bg-black/95 z-50 transform transition-transform duration-500 overflow-y-auto ${
           mobileMenuOpen ? "translate-x-0" : "translate-x-full"
         }`}
       >
         <button
           onClick={toggleMenu}
-          className="absolute top-8 right-8 text-white/50 hover:text-white"
+          className="absolute top-8 right-8 text-white/50 hover:text-white z-50"
         >
           <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path
@@ -115,34 +115,36 @@ export default function Header({ lang, navItems, onToggleLang }: HeaderProps) {
           </svg>
         </button>
 
-        {navItems.map((item) => (
-          <div key={item.name} className="w-full px-8">
-            <Link
-              href={item.href}
-              onClick={toggleMenu}
-              className="text-2xl uppercase tracking-widest hover:text-blue-400 transition-colors font-serif block mb-2"
-            >
-              {item.name}
-            </Link>
-            {item.subtabs && (
-              <div className="ml-4 mt-2 space-y-2 border-l-2 border-blue-400/30 pl-4">
-                {item.subtabs.map((subtab) => (
-                  <Link
-                    key={subtab.name}
-                    href={subtab.href}
-                    onClick={toggleMenu}
-                    className="block text-lg text-white/70 hover:text-blue-400 transition-colors"
-                  >
-                    {subtab.name}
-                  </Link>
-                ))}
-              </div>
-            )}
-          </div>
-        ))}
+        <div className="flex flex-col justify-start items-center min-h-full py-24 space-y-8">
+          {navItems.map((item) => (
+            <div key={item.name} className="w-full px-8 max-w-md">
+              <Link
+                href={item.href}
+                onClick={toggleMenu}
+                className="text-2xl uppercase tracking-widest hover:text-blue-400 transition-colors font-serif block mb-2"
+              >
+                {item.name}
+              </Link>
+              {item.subtabs && (
+                <div className="ml-4 mt-2 space-y-2 border-l-2 border-blue-400/30 pl-4">
+                  {item.subtabs.map((subtab) => (
+                    <Link
+                      key={subtab.name}
+                      href={subtab.href}
+                      onClick={toggleMenu}
+                      className="block text-lg text-white/70 hover:text-blue-400 transition-colors"
+                    >
+                      {subtab.name}
+                    </Link>
+                  ))}
+                </div>
+              )}
+            </div>
+          ))}
 
-        <div className="mt-8">
-          <LanguageToggle lang={lang} onToggle={onToggleLang} />
+          <div className="mt-8">
+            <LanguageToggle lang={lang} onToggle={onToggleLang} />
+          </div>
         </div>
       </div>
     </nav>
