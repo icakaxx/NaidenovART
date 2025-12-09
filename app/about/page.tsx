@@ -1,7 +1,8 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import Header, { NavItem } from "@/components/Header";
+import { NavItem } from "@/components/Header";
+import PageHeader from "@/components/PageHeader";
 import { buildNavItems, translations } from "@/lib/translations";
 import type { Language } from "@/types/language";
 
@@ -14,9 +15,7 @@ export default function AboutPage() {
 
   return (
     <main className="min-h-screen bg-neutral-900 text-white">
-      <div className="bg-neutral-950/90 backdrop-blur sticky top-0 z-50 border-b border-white/10">
-        <Header lang={lang} navItems={navItems} onToggleLang={toggleLang} />
-      </div>
+      <PageHeader lang={lang} navItems={navItems} onToggleLang={toggleLang} />
 
       <section className="max-w-6xl mx-auto px-6 md:px-12 py-20 space-y-6">
         <div className="space-y-4">

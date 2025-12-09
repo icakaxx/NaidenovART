@@ -67,18 +67,25 @@ export const translations = {
     objects: {
       description: "Вниманието и отношението към всеки обект са водещи принципи. Всяка идея бива скицирана след консултация и се пресъздава след одобрението на клиента.",
       items: [
-        { title: "Жечев", image: "/images/objects/Zhechev.webp" },
-        { title: "Пица Стоп", image: "/images/objects/pizza-stop.webp" },
-        { title: "ASEA-M Detailing Studio", image: "/images/objects/aseam.webp" },
-        { title: "068 barbershop", image: "/images/objects/barbershop.webp" },
-        { title: "Село Прелом", image: "/images/objects/prelom.webp" },
-        { title: "Vornikova Modern Dance School", image: "/images/objects/vornikova.webp" },
+        { title: "Жечев", image: "/images/objects/Zhechev.webp", id: "zhechev" },
+        { title: "Пица Стоп", image: "/images/objects/pizza-stop.webp", id: "pizza-stop" },
+        { title: "ASEA-M Detailing Studio", image: "/images/objects/aseam.webp", id: "asea-m" },
+        { title: "068 barbershop", image: "/images/objects/barbershop.webp", id: "068-barbershop" },
+        { title: "Село Прелом", image: "/images/objects/prelom.webp", id: "prelom" },
+        { title: "Vornikova Modern Dance School", image: "/images/objects/vornikova.webp", id: "vornikova" },
       ],
+    },
+    cars: {
+      alfaromeoTitle: "Проект Alfa Romeo 156",
+      alfaromeoDescription: "",
+      roadassistTitle: "Проект Пътна помощ",
+      roadassistDescription: "",
     },
     pages: {
       paintingsIntro:
         "Изберете формат, за да разгледате наличните творби или да направите поръчка.",
       projectsIntro: "Разделът е в подготовка.",
+      carsIntro: "Изберете проект, за да разгледате реализираните автомобили.",
       streetIntro: "Уличната кауза и посланията ще бъдат споделени скоро.",
       clothingIntro: "Coming soon",
       aboutIntro: "Информация за автора ще бъде добавена скоро.",
@@ -133,18 +140,25 @@ export const translations = {
     objects: {
       description: "Attention and attitude towards every object are guiding principles. Each idea is sketched after consultation and recreated upon client approval.",
       items: [
-        { title: "Zhechev", image: "/images/objects/Zhechev.webp" },
-        { title: "Pizza Stop", image: "/images/objects/pizza-stop.webp" },
-        { title: "ASEA-M Detailing Studio", image: "/images/objects/aseam.webp" },
-        { title: "068 barbershop", image: "/images/objects/barbershop.webp" },
-        { title: "Selo Prelom", image: "/images/objects/prelom.webp" },
-        { title: "Vornikova Modern Dance School", image: "/images/objects/vornikova.webp" },
+        { title: "Zhechev", image: "/images/objects/Zhechev.webp", id: "zhechev" },
+        { title: "Pizza Stop", image: "/images/objects/pizza-stop.webp", id: "pizza-stop" },
+        { title: "ASEA-M Detailing Studio", image: "/images/objects/aseam.webp", id: "asea-m" },
+        { title: "068 barbershop", image: "/images/objects/barbershop.webp", id: "068-barbershop" },
+        { title: "Selo Prelom", image: "/images/objects/prelom.webp", id: "prelom" },
+        { title: "Vornikova Modern Dance School", image: "/images/objects/vornikova.webp", id: "vornikova" },
       ],
+    },
+    cars: {
+      alfaromeoTitle: "Alfa Romeo 156 Project",
+      alfaromeoDescription: "",
+      roadassistTitle: "Road Assist Project",
+      roadassistDescription: "",
     },
     pages: {
       paintingsIntro:
         "Choose a format to view available works or place a commission.",
       projectsIntro: "This section is in preparation.",
+      carsIntro: "Choose a project to view completed vehicles.",
       streetIntro: "Street cause stories and messages are coming soon.",
       clothingIntro: "Coming soon",
       aboutIntro: "Author information will be added soon.",

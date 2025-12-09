@@ -1,8 +1,11 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import Header, { NavItem } from "@/components/Header";
+import { NavItem } from "@/components/Header";
+import PageHeader from "@/components/PageHeader";
 import { buildNavItems, translations } from "@/lib/translations";
+import Link from "next/link";
+
 import type { Language } from "@/types/language";
 
 export default function ObjectsPage() {
@@ -15,9 +18,7 @@ export default function ObjectsPage() {
   return (
     <main className="min-h-screen bg-neutral-900 text-white relative">
       <div className="absolute inset-0 bg-[url('/favicon1.png')] bg-cover bg-center opacity-10 pointer-events-none fixed" />
-      <div className="bg-neutral-950/90 backdrop-blur sticky top-0 z-50 border-b border-white/10 relative">
-        <Header lang={lang} navItems={navItems} onToggleLang={toggleLang} />
-      </div>
+      <PageHeader lang={lang} navItems={navItems} onToggleLang={toggleLang} />
 
       <section className="max-w-7xl mx-auto px-6 md:px-12 py-16 md:py-20 space-y-10">
         <div className="space-y-6">
@@ -32,8 +33,9 @@ export default function ObjectsPage() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
           {copy.objects.items.map((item, index) => (
-            <div
+            <Link
               key={index}
+              href={`/projects/objects/${item.id}`}
               className="group relative overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-br from-white/5 to-white/0 p-6 md:p-8 transition duration-500 hover:-translate-y-1 hover:shadow-[0_25px_60px_-25px_rgba(0,0,0,0.75)] min-h-[300px] flex flex-col justify-end"
             >
               <div
@@ -47,10 +49,11 @@ export default function ObjectsPage() {
                   <span aria-hidden>→</span>
                 </span>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
       </section>
     </main>
   );
 }
+
