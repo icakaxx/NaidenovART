@@ -81,10 +81,20 @@ export const translations = {
       roadassistTitle: "Проект Пътна помощ",
       roadassistDescription: "",
     },
+    projects: {
+      objectsTitle: "Обекти",
+      objectsDescription: "Графично оформление и брандинг на различни обекти - от заведения до бизнес помещения.",
+      carsTitle: "Автомобили",
+      carsDescription: "Персонализирано графично оформление на автомобили с внимание към всеки детайл.",
+      helmetsTitle: "Каски",
+      helmetsDescription: "Уникален дизайн и графично оформление на каски за мотоциклетисти.",
+      laptopsTitle: "Лаптопи",
+      laptopsDescription: "Креативно графично оформление на лаптопи за персонализиран стил.",
+    },
     pages: {
       paintingsIntro:
         "Изберете формат, за да разгледате наличните творби или да направите поръчка.",
-      projectsIntro: "Разделът е в подготовка.",
+      projectsIntro: "Изберете категория проекти, за да разгледате реализираните работи.",
       carsIntro: "Изберете проект, за да разгледате реализираните автомобили.",
       streetIntro: "Уличната кауза и посланията ще бъдат споделени скоро.",
       clothingIntro: "Coming soon",
@@ -154,10 +164,20 @@ export const translations = {
       roadassistTitle: "Road Assist Project",
       roadassistDescription: "",
     },
+    projects: {
+      objectsTitle: "Objects",
+      objectsDescription: "Graphic design and branding for various facilities - from restaurants to business premises.",
+      carsTitle: "Cars",
+      carsDescription: "Custom vehicle graphics with attention to every detail.",
+      helmetsTitle: "Helmets",
+      helmetsDescription: "Unique design and graphic styling for motorcycle helmets.",
+      laptopsTitle: "Laptops",
+      laptopsDescription: "Creative graphic design for laptops with personalized style.",
+    },
     pages: {
       paintingsIntro:
         "Choose a format to view available works or place a commission.",
-      projectsIntro: "This section is in preparation.",
+      projectsIntro: "Choose a project category to view completed works.",
       carsIntro: "Choose a project to view completed vehicles.",
       streetIntro: "Street cause stories and messages are coming soon.",
       clothingIntro: "Coming soon",
