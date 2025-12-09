@@ -29,12 +29,9 @@ export default function ClothingPage() {
           </p>
         </div>
         <div className="rounded-2xl border border-white/10 bg-white/5 p-8 text-white/60">
-          {lang === "bg"
-            ? "Работим по колекция от ръчно рисувани дрехи. Повече снимки скоро."
-            : "We are preparing a collection of hand-painted garments. Photos coming soon."}
+          {lang === "bg" ? "Очаквайте скоро." : "Coming soon."}
         </div>
       </section>
     </main>
   );
 }
-

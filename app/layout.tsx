@@ -19,8 +19,8 @@ export const metadata: Metadata = {
   title: "NaidenovART - Рисуване по всичко",
   description: "От платното до уличните стени и текстила. Изкуството е начин на живот, а не просто хоби.",
   icons: {
-    icon: '/favicon.png',
-    apple: '/favicon.png',
+    icon: '/favicon1.png',
+    apple: '/favicon1.png',
   },
 };
 

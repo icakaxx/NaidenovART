@@ -216,3 +216,4 @@ export default function Lightbox({ src, alt, isOpen, onClose }: LightboxProps) {
   );
 }
 
+

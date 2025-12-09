@@ -6,7 +6,13 @@ export const routes = {
   a3: "/paintings/a3",
   a4: "/paintings/a4",
   projects: "/projects",
+  objects: "/projects/objects",
+  cars: "/projects/cars",
+  helmets: "/projects/helmets",
+  laptops: "/projects/laptops",
   street: "/street-cause",
+  messages: "/street-cause/messages",
+  awards: "/street-cause/awards",
   clothing: "/clothing",
   about: "/about",
 } as const;
@@ -58,12 +64,23 @@ export const translations = {
       a4OrderNote:
         "Картините по поръчка са един от най-търсените и предпочитани подаръци за всякакъв повод. Изработват се индивидуално според желанието на клиента и са подходящи както за лични, така и за корпоративни събития. Всяка поръчана картина пристига при Вас в рамка и специално обезопасена. Към нея добавяме ръчно изрисувана подаръчна кутия – напълно безплатно, за да получите завършен, елегантен и готов за подаряване продукт.",
     },
+    objects: {
+      description: "Вниманието и отношението към всеки обект са водещи принципи. Всяка идея бива скицирана след консултация и се пресъздава след одобрението на клиента.",
+      items: [
+        { title: "Жечев", image: "/images/objects/Zhechev.webp" },
+        { title: "Пица Стоп", image: "/images/objects/pizza-stop.webp" },
+        { title: "ASEA-M Detailing Studio", image: "/images/objects/aseam.webp" },
+        { title: "068 barbershop", image: "/images/objects/barbershop.webp" },
+        { title: "Село Прелом", image: "/images/objects/prelom.webp" },
+        { title: "Vornikova Modern Dance School", image: "/images/objects/vornikova.webp" },
+      ],
+    },
     pages: {
       paintingsIntro:
         "Изберете формат, за да разгледате наличните творби или да направите поръчка.",
       projectsIntro: "Разделът е в подготовка.",
       streetIntro: "Уличната кауза и посланията ще бъдат споделени скоро.",
-      clothingIntro: "Подготвяме селекция от ръчно рисувани облекла.",
+      clothingIntro: "Coming soon",
       aboutIntro: "Информация за автора ще бъде добавена скоро.",
     },
   },
@@ -113,12 +130,23 @@ export const translations = {
       a4OrderNote:
         "Custom paintings are one of the most requested and appreciated gifts for any occasion. Each piece is made to order based on the client’s vision and is suitable for both personal and corporate events. Every ordered painting arrives framed and securely packaged. We include a hand-painted gift box at no extra cost, so you receive a complete, elegant, ready-to-gift piece.",
     },
+    objects: {
+      description: "Attention and attitude towards every object are guiding principles. Each idea is sketched after consultation and recreated upon client approval.",
+      items: [
+        { title: "Zhechev", image: "/images/objects/Zhechev.webp" },
+        { title: "Pizza Stop", image: "/images/objects/pizza-stop.webp" },
+        { title: "ASEA-M Detailing Studio", image: "/images/objects/aseam.webp" },
+        { title: "068 barbershop", image: "/images/objects/barbershop.webp" },
+        { title: "Selo Prelom", image: "/images/objects/prelom.webp" },
+        { title: "Vornikova Modern Dance School", image: "/images/objects/vornikova.webp" },
+      ],
+    },
     pages: {
       paintingsIntro:
         "Choose a format to view available works or place a commission.",
       projectsIntro: "This section is in preparation.",
       streetIntro: "Street cause stories and messages are coming soon.",
-      clothingIntro: "A selection of hand-painted garments is on the way.",
+      clothingIntro: "Coming soon",
       aboutIntro: "Author information will be added soon.",
     },
   },
@@ -135,9 +163,24 @@ export const buildNavItems = (copy: Translation) => [
       { name: copy.nav.subtabs.a4, href: routes.a4 },
     ],
   },
-  { name: copy.nav.projects, href: routes.projects },
-  { name: copy.nav.street, href: routes.street },
+  {
+    name: copy.nav.projects,
+    href: routes.projects,
+    subtabs: [
+      { name: copy.nav.subtabs.objects, href: routes.objects },
+      { name: copy.nav.subtabs.cars, href: routes.cars },
+      { name: copy.nav.subtabs.helmets, href: routes.helmets },
+      { name: copy.nav.subtabs.laptops, href: routes.laptops },
+    ],
+  },
+  {
+    name: copy.nav.street,
+    href: routes.street,
+    subtabs: [
+      { name: copy.nav.subtabs.messages, href: routes.messages },
+      { name: copy.nav.subtabs.awards, href: routes.awards },
+    ],
+  },
   { name: copy.nav.clothing, href: routes.clothing },
   { name: copy.nav.about, href: routes.about },
 ];
-

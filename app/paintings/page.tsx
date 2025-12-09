@@ -14,8 +14,9 @@ export default function PaintingsPage() {
   const toggleLang = () => setLang((prev) => (prev === "bg" ? "en" : "bg"));
 
   return (
-    <main className="min-h-screen bg-neutral-900 text-white">
-      <div className="bg-neutral-950/90 backdrop-blur sticky top-0 z-50 border-b border-white/10">
+    <main className="min-h-screen bg-neutral-900 text-white relative">
+      <div className="absolute inset-0 bg-[url('/favicon1.png')] bg-cover bg-center opacity-10 pointer-events-none fixed" />
+      <div className="bg-neutral-950/90 backdrop-blur sticky top-0 z-50 border-b border-white/10 relative">
         <Header lang={lang} navItems={navItems} onToggleLang={toggleLang} />
       </div>
 
@@ -35,7 +36,7 @@ export default function PaintingsPage() {
             href={routes.a3}
             className="group relative overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-br from-white/5 to-white/0 p-6 md:p-8 transition duration-500 hover:-translate-y-1 hover:shadow-[0_25px_60px_-25px_rgba(0,0,0,0.75)]"
           >
-            <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=900&q=80')] bg-cover bg-center opacity-20 group-hover:opacity-30 transition duration-500" />
+            <div className="absolute inset-0 bg-[url('/images/bg-pics/unnamed.jpg')] bg-cover bg-center opacity-20 group-hover:opacity-30 transition duration-500" />
             <div className="relative space-y-3">
               <div className="text-xs uppercase tracking-[0.25em] text-blue-300">A3</div>
               <h3 className="text-3xl font-serif font-bold">{copy.paintings.a3Title}</h3>
@@ -51,7 +52,7 @@ export default function PaintingsPage() {
             href={routes.a4}
             className="group relative overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-br from-white/5 to-white/0 p-6 md:p-8 transition duration-500 hover:-translate-y-1 hover:shadow-[0_25px_60px_-25px_rgba(0,0,0,0.75)]"
           >
-            <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1523419400524-fc1e0a411b86?auto=format&fit=crop&w=900&q=80')] bg-cover bg-center opacity-20 group-hover:opacity-30 transition duration-500" />
+            <div className="absolute inset-0 bg-[url('/images/bg-pics/unnamed.jpg')] bg-cover bg-center opacity-20 group-hover:opacity-30 transition duration-500" />
             <div className="relative space-y-3">
               <div className="text-xs uppercase tracking-[0.25em] text-blue-300">A4</div>
               <h3 className="text-3xl font-serif font-bold">{copy.paintings.a4Title}</h3>
@@ -67,4 +68,5 @@ export default function PaintingsPage() {
     </main>
   );
 }
+
 
