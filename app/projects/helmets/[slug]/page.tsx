@@ -41,7 +41,7 @@ export default function HelmetPage({ params }: HelmetPageProps) {
       return lang === "bg" ? "Колекция Каски" : "Helmet Collection";
     }
     return helmetData.titleKey;
-  }, [copy, helmetData, params.slug, lang]);
+  }, [helmetData, params.slug, lang]);
 
   if (!helmetData) {
     return notFound();

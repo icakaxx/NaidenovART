@@ -41,7 +41,7 @@ export default function LaptopPage({ params }: LaptopPageProps) {
       return lang === "bg" ? "Колекция Лаптопи" : "Laptop Collection";
     }
     return laptopData.titleKey;
-  }, [copy, params.slug, laptopData, lang]);
+  }, [params.slug, laptopData, lang]);
 
   if (!laptopData) {
     return notFound();
