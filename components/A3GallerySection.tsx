@@ -81,20 +81,26 @@ export default function A3GallerySection({ copy }: A3GallerySectionProps) {
                 `}
                 onClick={() => setLightboxImage(image)}
               >
+                {/* Blurred background */}
                 <div
-                  className="absolute inset-0 scale-110 blur-xl opacity-30"
-                  style={{ backgroundImage: `url(${image.src})`, backgroundSize: "cover", backgroundPosition: "center" }}
+                  className="absolute inset-0 blur-md scale-110"
+                  style={{
+                    backgroundImage: `url('${image.src}')`,
+                    backgroundSize: 'cover',
+                    backgroundPosition: 'center'
+                  }}
                   aria-hidden
                 />
+                {/* Main image */}
                 <Image
                   src={image.src}
                   alt={image.alt}
                   fill
-                  className="object-contain p-2 transition-transform duration-500 ease-out group-hover:scale-105"
+                  className="object-contain transition duration-500 group-hover:scale-105 relative z-10"
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                   priority={idx < 3}
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-black/0 to-black/40 opacity-0 group-hover:opacity-100 transition duration-500"></div>
+                <div className="absolute inset-0 bg-black/0 transition duration-300 group-hover:bg-black/20 z-20"></div>
                 <div className="absolute bottom-3 left-3 text-xs tracking-widest text-white/80 uppercase bg-black/40 px-3 py-1 rounded-full backdrop-blur">
                   {idx + 1}
                 </div>

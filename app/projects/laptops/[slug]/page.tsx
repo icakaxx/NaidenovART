@@ -7,16 +7,16 @@ import { NavItem } from "@/components/Header";
 import PageHeader from "@/components/PageHeader";
 import Lightbox from "@/components/Lightbox";
 import { buildNavItems, translations } from "@/lib/translations";
-import { carsData } from "@/lib/cars-data";
+import { laptopsData } from "@/lib/laptops-data";
 import type { Language } from "@/types/language";
 
-interface CarPageProps {
+interface LaptopPageProps {
   params: {
     slug: string;
   };
 }
 
-export default function CarPage({ params }: CarPageProps) {
+export default function LaptopPage({ params }: LaptopPageProps) {
   const [lang, setLang] = useState<Language>("bg");
   const [lightboxState, setLightboxState] = useState<{
     isOpen: boolean;
@@ -31,35 +31,31 @@ export default function CarPage({ params }: CarPageProps) {
 
   const toggleLang = () => setLang((prev) => (prev === "bg" ? "en" : "bg"));
 
-  // Find car project data
-  const carData = carsData.find((p) => p.id === params.slug);
+  // Find laptop project data
+  const laptopData = laptopsData.find((p) => p.id === params.slug);
 
   // Determine project title based on slug
   const projectTitle = useMemo(() => {
-    if (!carData) return "";
-    if (params.slug === "alfa-romeo-156") {
-      return copy.cars.alfaromeoTitle;
-    } else if (params.slug === "road-assist") {
-      return copy.cars.roadassistTitle;
-    } else if (params.slug === "kadisha") {
-      return copy.cars.kadishaTitle;
+    if (!laptopData) return "";
+    if (params.slug === "laptops-collection") {
+      return lang === "bg" ? "Колекция Лаптопи" : "Laptop Collection";
     }
-    return carData.titleKey;
-  }, [copy, params.slug, carData]);
+    return laptopData.titleKey;
+  }, [copy, params.slug, laptopData, lang]);
 
-  if (!carData) {
+  if (!laptopData) {
     return notFound();
   }
 
   // Determine the background image: use the last image of the first series
-  const lastImage = carData.series.length > 0 && carData.series[0].images.length > 0 
-    ? carData.series[0].images[carData.series[0].images.length - 1]
+  const lastImage = laptopData.series.length > 0 && laptopData.series[0].images.length > 0
+    ? laptopData.series[0].images[laptopData.series[0].images.length - 1]
     : "/favicon1.png";
 
   return (
     <main className="min-h-screen bg-neutral-900 text-white relative">
-      <div 
-        className="absolute inset-0 bg-cover bg-center opacity-30 pointer-events-none fixed z-0"
+      <div
+        className="absolute inset-0 bg-cover bg-center opacity-30 pointer-events-none fixed z-0 blur-md scale-110"
         style={{ backgroundImage: `url('${lastImage}')` }}
       />
       <div className="absolute inset-0 bg-neutral-900/80 pointer-events-none fixed z-0" />
@@ -72,18 +68,15 @@ export default function CarPage({ params }: CarPageProps) {
             <h1 className="text-4xl md:text-5xl font-serif font-bold">
               {projectTitle}
             </h1>
-            <p className="text-white/70 max-w-3xl leading-relaxed">
-              {copy.pages.carsDescription}
-            </p>
           </div>
 
           <div className="space-y-16">
-            {carData.series.map((series, seriesIndex) => (
+            {laptopData.series.map((series, seriesIndex) => (
               <div key={seriesIndex} className="space-y-6">
                 {/* Only show series title if there are multiple series */}
-                {carData.series.length > 1 && (
+                {laptopData.series.length > 1 && (
                   <h2 className="text-2xl font-serif text-white/80 border-b border-white/10 pb-2 inline-block">
-                    {series.name === "Main" 
+                    {series.name === "Main"
                       ? (lang === "bg" ? "Галерия" : "Gallery")
                       : series.name
                     }
@@ -98,9 +91,9 @@ export default function CarPage({ params }: CarPageProps) {
                       onClick={() => setLightboxState({ isOpen: true, src: imageSrc })}
                     >
                       {/* Blurred background */}
-                      <div 
+                      <div
                         className="absolute inset-0 blur-md scale-110"
-                        style={{ 
+                        style={{
                           backgroundImage: `url('${imageSrc}')`,
                           backgroundSize: 'cover',
                           backgroundPosition: 'center'
@@ -114,7 +107,7 @@ export default function CarPage({ params }: CarPageProps) {
                         className="object-contain transition duration-500 group-hover:scale-105 relative z-10"
                         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                       />
-                      <div className="absolute inset-0 bg-black/0 transition duration-300 group-hover:bg-black/20 z-20" />
+                      <div className="absolute inset-0 bg-black/0 transition duration-300 group-hover:bg-black/20 z-20"></div>
                     </div>
                   ))}
                 </div>

@@ -39,7 +39,7 @@ export default function ObjectsPage() {
               className="group relative overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-br from-white/5 to-white/0 p-6 md:p-8 transition duration-500 hover:-translate-y-1 hover:shadow-[0_25px_60px_-25px_rgba(0,0,0,0.75)] min-h-[300px] flex flex-col justify-end"
             >
               <div
-                className="absolute inset-0 bg-cover bg-center opacity-60 group-hover:opacity-70 transition duration-500"
+                className="absolute inset-0 bg-cover bg-center opacity-60 group-hover:opacity-70 transition duration-500 blur-sm"
                 style={{ backgroundImage: `url('${item.image}')` }}
               />
               <div className="relative space-y-3">

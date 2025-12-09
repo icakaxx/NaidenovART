@@ -51,4 +51,20 @@ export const carsData: CarProjectData[] = [
       },
     ],
   },
+  {
+    id: "kadisha",
+    titleKey: "Kadisha",
+    coverImage: "/images/vehicles/kadisha/1000026344.webp",
+    series: [
+      {
+        name: "Main",
+        images: [
+          "/images/vehicles/kadisha/1000026344.webp",
+          "/images/vehicles/kadisha/1000026345.webp",
+          "/images/vehicles/kadisha/1000026346.webp",
+        ],
+      },
+    ],
+  },
 ];
+

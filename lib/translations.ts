@@ -14,7 +14,6 @@ export const routes = {
   messages: "/street-cause/messages",
   awards: "/street-cause/awards",
   clothing: "/clothing",
-  about: "/about",
 } as const;
 
 export const translations = {
@@ -24,7 +23,6 @@ export const translations = {
       projects: "Проекти",
       street: "Улична кауза",
       clothing: "Дрехи",
-      about: "За мен",
       subtabs: {
         a3: "А3 формат (30х40 см.)",
         a4: "А4 формат (29х19см.)",
@@ -80,6 +78,8 @@ export const translations = {
       alfaromeoDescription: "",
       roadassistTitle: "Проект Пътна помощ",
       roadassistDescription: "",
+      kadishaTitle: "Проект Кадиша",
+      kadishaDescription: "",
     },
     projects: {
       objectsTitle: "Обекти",
@@ -96,9 +96,26 @@ export const translations = {
         "Изберете формат, за да разгледате наличните творби или да направите поръчка.",
       projectsIntro: "Изберете категория проекти, за да разгледате реализираните работи.",
       carsIntro: "Изберете проект, за да разгледате реализираните автомобили.",
-      streetIntro: "Уличната кауза и посланията ще бъдат споделени скоро.",
+      carsDescription: "Всяко превозно средство преминава през пълно третиране на повърхността. Това е като цялостно пребоядисване, като се рисува върху боята, служеща за база, преди лакиране. На този етап, NAIDENOVART предлага рисуване само върху предварително подготвени автомобили.",
+      streetIntro: "Изберете категория улична кауза, за да разгледате инициативите.",
+      messagesIntro: "Уличните послания в гр. Ловеч обикалят българският интернет от 2023 г. до днес. Тяхната задача е да усмихват, вдъхновяват и всяват добро настроение в забързаното ежедневие сред хората. Каузата се породи след кървавия случай с Дебора Михайлова, като ловешките улици осъмнаха с послания в подкрепа на жените, жертви на домашно насилие. Тогава се уверихме, че освен да усмихват, могат и да помагат на хората, карайки ги да се чувстват разбрани. Те придобиват голяма популярност с всеки изминал път, като тяхното въздействие е факт и през социалните мрежи. За тези улични инициативи, NAIDENOVART бе награден от \"24 часа\" в ежегодната им церемония за достойните българи. Дни след това и от кметът на Ловеч - Страцимир Петков, за издигане престижа на Ловеч.",
       clothingIntro: "Coming soon",
-      aboutIntro: "Информация за автора ще бъде добавена скоро.",
+    },
+    street: {
+      messagesTitle: "Послания",
+      messagesDescription: "Улични послания и инициативи, които вдъхновяват и подкрепят общността.",
+      awardsTitle: "Награди",
+      awardsDescription: "Признания и награди за принос към изкуството и социалните каузи.",
+    },
+    messages: {
+      customTitle: "Послания по поръчка",
+      customDescription: "Индивидуалните улични послания по поръчка са трогателен и подходящ метод за всеки повод. Те допринесоха емоционално за брачни предложения, изненади за рождени дни, покани за бал или обяснение в любов към някого. Реклами НЕ се приемат.",
+      cause1Title: "Улична кауза 1",
+      cause1Description: "Уличните послания в гр. Ловеч обикалят българският интернет от 2023 г. до днес. Тяхната задача е да усмихват, вдъхновяват и всяват добро настроение в забързаното ежедневие сред хората.",
+      cause2Title: "Улична кауза 2",
+      cause2Description: "Уличните послания в гр. Ловеч обикалят българският интернет от 2023 г. до днес. Тяхната задача е да усмихват, вдъхновяват и всяват добро настроение в забързаното ежедневие сред хората.",
+      cause3Title: "Улична кауза 3",
+      cause3Description: "Уличните послания в гр. Ловеч обикалят българският интернет от 2023 г. до днес. Тяхната задача е да усмихват, вдъхновяват и всяват добро настроение в забързаното ежедневие сред хората.",
     },
   },
   en: {
@@ -107,7 +124,6 @@ export const translations = {
       projects: "Projects",
       street: "Street cause",
       clothing: "Clothing",
-      about: "About me",
       subtabs: {
         a3: "A3 format (30x40 cm)",
         a4: "A4 format (29x19 cm)",
@@ -163,6 +179,8 @@ export const translations = {
       alfaromeoDescription: "",
       roadassistTitle: "Road Assist Project",
       roadassistDescription: "",
+      kadishaTitle: "Kadisha Project",
+      kadishaDescription: "",
     },
     projects: {
       objectsTitle: "Objects",
@@ -174,14 +192,31 @@ export const translations = {
       laptopsTitle: "Laptops",
       laptopsDescription: "Creative graphic design for laptops with personalized style.",
     },
+    street: {
+      messagesTitle: "Messages",
+      messagesDescription: "Street messages and initiatives that inspire and support the community.",
+      awardsTitle: "Awards",
+      awardsDescription: "Recognitions and awards for contributions to art and social causes.",
+    },
+    messages: {
+      customTitle: "Custom Messages",
+      customDescription: "Individual custom street messages are a touching and appropriate method for every occasion. They contributed emotionally to marriage proposals, birthday surprises, ball invitations or declaration of love to someone. ADS are NOT accepted.",
+      cause1Title: "Street Cause 1",
+      cause1Description: "The street messages in Lovech have been circulating Bulgarian internet from 2023 to the present. Their task is to smile, inspire and instill good mood in the busy daily life among people.",
+      cause2Title: "Street Cause 2",
+      cause2Description: "The street messages in Lovech have been circulating Bulgarian internet from 2023 to the present. Their task is to smile, inspire and instill good mood in the busy daily life among people.",
+      cause3Title: "Street Cause 3",
+      cause3Description: "The street messages in Lovech have been circulating Bulgarian internet from 2023 to the present. Their task is to smile, inspire and instill good mood in the busy daily life among people.",
+    },
     pages: {
       paintingsIntro:
         "Choose a format to view available works or place a commission.",
       projectsIntro: "Choose a project category to view completed works.",
       carsIntro: "Choose a project to view completed vehicles.",
-      streetIntro: "Street cause stories and messages are coming soon.",
+      carsDescription: "Each vehicle undergoes full surface treatment. This is like a complete repainting, where painting is done on the base paint before varnishing. At this stage, NAIDENOVART offers painting only on pre-prepared vehicles.",
+      streetIntro: "Choose a street cause category to view the initiatives.",
+      messagesIntro: "The street messages in Lovech have been circulating Bulgarian internet from 2023 to the present. Their task is to smile, inspire and instill good mood in the busy daily life among people. The cause arose after the bloody case with Debora Mihaylova, when the streets of Lovech woke up with messages in support of women, victims of domestic violence. Then we were convinced that besides smiling, they can help people, making them feel understood. They gain great popularity with each passing time, and their impact is a fact through social networks. For these street initiatives, NAIDENOVART was awarded by \"24 chasa\" in their annual ceremony for worthy Bulgarians. Days later also from the mayor of Lovech - Stratsimir Petkov, for raising the prestige of Lovech.",
       clothingIntro: "Coming soon",
-      aboutIntro: "Author information will be added soon.",
     },
   },
 } as const;
@@ -216,5 +251,4 @@ export const buildNavItems = (copy: Translation) => [
     ],
   },
   { name: copy.nav.clothing, href: routes.clothing },
-  { name: copy.nav.about, href: routes.about },
 ];
