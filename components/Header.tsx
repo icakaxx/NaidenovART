@@ -81,23 +81,20 @@ export default function Header({ lang, navItems, onToggleLang }: HeaderProps) {
         <LanguageToggle lang={lang} onToggle={onToggleLang} />
       </div>
 
-      {/* Mobile Layout: Brand - Language Toggle - Menu */}
-      <div className="md:hidden flex items-center gap-4">
-        <LanguageToggle lang={lang} onToggle={onToggleLang} />
-        <button
-          className="text-white hover:text-blue-400 transition-colors focus:outline-none"
-          onClick={toggleMenu}
-        >
-          <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="1.5"
-              d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
-            />
-          </svg>
-        </button>
-      </div>
+      {/* Mobile Menu Button */}
+      <button
+        className="md:hidden text-white hover:text-blue-400 transition-colors focus:outline-none"
+        onClick={toggleMenu}
+      >
+        <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth="1.5"
+            d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+          />
+        </svg>
+      </button>
 
       {/* Mobile Menu Overlay */}
       <div
@@ -145,6 +142,11 @@ export default function Header({ lang, navItems, onToggleLang }: HeaderProps) {
               )}
             </div>
           ))}
+          
+          {/* Language Toggle at Bottom */}
+          <div className="pt-8">
+            <LanguageToggle lang={lang} onToggle={onToggleLang} />
+          </div>
         </div>
       </div>
     </nav>
