@@ -34,18 +34,19 @@ export default function ObjectPage({ params }: ObjectPageProps) {
   // Find project data
   const projectData = objectsData.find((p) => p.id === params.slug);
 
-  if (!projectData) {
-    return notFound();
-  }
-
   // Find translation for title
   // We assume the structure of translations matches the IDs added previously
   const projectTitle = useMemo(() => {
+    if (!projectData) return "";
     // We try to find the item in the translations array that matches the slug
     // We added 'id' to the items in translations.ts
     const item = copy.objects.items.find((i: any) => i.id === params.slug);
     return item ? item.title : projectData.titleKey;
-  }, [copy, params.slug, projectData.titleKey]);
+  }, [copy, params.slug, projectData]);
+
+  if (!projectData) {
+    return notFound();
+  }
 
   // Determine the background image: try to use the last image of the first series, otherwise fallback
   const lastImage = projectData.series.length > 0 && projectData.series[0].images.length > 0 

@@ -34,19 +34,20 @@ export default function CarPage({ params }: CarPageProps) {
   // Find car project data
   const carData = carsData.find((p) => p.id === params.slug);
 
-  if (!carData) {
-    return notFound();
-  }
-
   // Determine project title based on slug
   const projectTitle = useMemo(() => {
+    if (!carData) return "";
     if (params.slug === "alfa-romeo-156") {
       return copy.cars.alfaromeoTitle;
     } else if (params.slug === "road-assist") {
       return copy.cars.roadassistTitle;
     }
     return carData.titleKey;
-  }, [copy, params.slug, carData.titleKey]);
+  }, [copy, params.slug, carData]);
+
+  if (!carData) {
+    return notFound();
+  }
 
   // Determine the background image: use the last image of the first series
   const lastImage = carData.series.length > 0 && carData.series[0].images.length > 0 
