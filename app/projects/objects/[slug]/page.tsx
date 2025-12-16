@@ -124,3 +124,5 @@ export default function ObjectPage({ params }: ObjectPageProps) {
   );
 }
 
+
+

@@ -28,7 +28,7 @@ export default function Header({ lang, navItems, onToggleLang }: HeaderProps) {
   return (
     <nav className="w-full px-6 py-6 md:px-12 md:py-8 flex justify-between items-center relative z-50" id="navbar">
       <Link href="/" className="flex items-center gap-4 cursor-pointer group">
-        <div className="text-2xl md:text-3xl font-bold tracking-widest uppercase font-serif text-white group-hover:text-blue-400 transition-colors">
+        <div className="text-xl md:text-3xl font-bold tracking-widest uppercase font-serif text-white group-hover:text-blue-400 transition-colors">
           NaidenovART
         </div>
       </Link>

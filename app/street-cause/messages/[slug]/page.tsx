@@ -35,17 +35,13 @@ export default function MessagePage({ params }: MessagePageProps) {
     if (!params.slug) return "";
     if (params.slug === "custom") {
       return copy.messages.customTitle;
-    } else if (params.slug === "cause1") {
-      return copy.messages.cause1Title;
-    } else if (params.slug === "cause2") {
-      return copy.messages.cause2Title;
-    } else if (params.slug === "cause3") {
-      return copy.messages.cause3Title;
+    } else if (params.slug === "street-cause") {
+      return copy.messages.streetCauseTitle;
     }
     return "";
   }, [copy, params.slug]);
 
-  // Images from actual folders
+  // Images from actual folders - combine all street-cause folders
   const images = useMemo(() => {
     if (params.slug === "custom") {
       return [
@@ -55,24 +51,22 @@ export default function MessagePage({ params }: MessagePageProps) {
         "/images/messages/personal-messages/1000026337.webp",
         "/images/messages/personal-messages/1000026338.webp",
       ];
-    } else if (params.slug === "cause1") {
+    } else if (params.slug === "street-cause") {
+      // Combine all street-cause images from all 3 folders
       return [
+        // Street cause 1
         "/images/messages/street-cause-1/1000026321.webp",
         "/images/messages/street-cause-1/1000026322.webp",
         "/images/messages/street-cause-1/1000026324.webp",
         "/images/messages/street-cause-1/1000026327.webp",
         "/images/messages/street-cause-1/1000026330.webp",
-      ];
-    } else if (params.slug === "cause2") {
-      return [
+        // Street cause 2
         "/images/messages/street-cause-2/1000026318.webp",
         "/images/messages/street-cause-2/1000026319.webp",
         "/images/messages/street-cause-2/1000026320.webp",
         "/images/messages/street-cause-2/1000026323.webp",
         "/images/messages/street-cause-2/1000026329.webp",
-      ];
-    } else if (params.slug === "cause3") {
-      return [
+        // Street cause 3
         "/images/messages/street-cause-3/1000026322.webp",
         "/images/messages/street-cause-3/1000026325.webp",
         "/images/messages/street-cause-3/1000026326.webp",
@@ -111,19 +105,9 @@ export default function MessagePage({ params }: MessagePageProps) {
                 {copy.messages.customDescription}
               </p>
             )}
-            {params.slug === "cause1" && (
+            {params.slug === "street-cause" && (
               <p className="text-white/70 max-w-3xl leading-relaxed">
-                {copy.messages.cause1Description}
-              </p>
-            )}
-            {params.slug === "cause2" && (
-              <p className="text-white/70 max-w-3xl leading-relaxed">
-                {copy.messages.cause2Description}
-              </p>
-            )}
-            {params.slug === "cause3" && (
-              <p className="text-white/70 max-w-3xl leading-relaxed">
-                {copy.messages.cause3Description}
+                {copy.messages.streetCauseDescription}
               </p>
             )}
           </div>
@@ -172,4 +156,6 @@ export default function MessagePage({ params }: MessagePageProps) {
     </main>
   );
 }
+
+
 

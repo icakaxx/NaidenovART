@@ -45,9 +45,9 @@ export const translations = {
       title: "Избрани творби",
       viewAll: "Разгледай всички",
       cards: [
-        { title: 'Абстракция "Начало"', category: "Картини" },
-        { title: "Уличен Проект София", category: "Улична кауза" },
-        { title: 'Колекция "Зима"', category: "Дрехи" },
+        { title: "Проект Alfa Romeo 156", category: "Автомобили", href: "/projects/cars/alfa-romeo-156", image: "/images/vehicles/alfa-romeo/alfa8.jpg" },
+        { title: "Улична кауза", category: "Улична кауза", href: "/street-cause/messages/street-cause", image: "/images/messages/street-cause-1/1000026321.webp" },
+        { title: "Пица Стоп", category: "Обекти", href: "/projects/objects/pizza-stop", image: "/images/objects/pizza-stop.webp" },
       ],
     },
     paintings: {
@@ -110,12 +110,8 @@ export const translations = {
     messages: {
       customTitle: "Послания по поръчка",
       customDescription: "Индивидуалните улични послания по поръчка са трогателен и подходящ метод за всеки повод. Те допринесоха емоционално за брачни предложения, изненади за рождени дни, покани за бал или обяснение в любов към някого. Реклами НЕ се приемат.",
-      cause1Title: "Улична кауза 1",
-      cause1Description: "Уличните послания в гр. Ловеч обикалят българският интернет от 2023 г. до днес. Тяхната задача е да усмихват, вдъхновяват и всяват добро настроение в забързаното ежедневие сред хората.",
-      cause2Title: "Улична кауза 2",
-      cause2Description: "Уличните послания в гр. Ловеч обикалят българският интернет от 2023 г. до днес. Тяхната задача е да усмихват, вдъхновяват и всяват добро настроение в забързаното ежедневие сред хората.",
-      cause3Title: "Улична кауза 3",
-      cause3Description: "Уличните послания в гр. Ловеч обикалят българският интернет от 2023 г. до днес. Тяхната задача е да усмихват, вдъхновяват и всяват добро настроение в забързаното ежедневие сред хората.",
+      streetCauseTitle: "Улична кауза",
+      streetCauseDescription: "Уличните послания в гр. Ловеч обикалят българският интернет от 2023 г. до днес. Тяхната задача е да усмихват, вдъхновяват и всяват добро настроение в забързаното ежедневие сред хората.",
     },
   },
   en: {
@@ -146,9 +142,9 @@ export const translations = {
       title: "Selected works",
       viewAll: "View all",
       cards: [
-        { title: 'Abstraction "Beginning"', category: "Paintings" },
-        { title: "Street Project Sofia", category: "Street cause" },
-        { title: 'Collection "Winter"', category: "Clothing" },
+        { title: "Alfa Romeo 156 Project", category: "Cars", href: "/projects/cars/alfa-romeo-156", image: "/images/vehicles/alfa-romeo/alfa8.jpg" },
+        { title: "Street Cause", category: "Street cause", href: "/street-cause/messages/street-cause", image: "/images/messages/street-cause-1/1000026321.webp" },
+        { title: "Pizza Stop", category: "Objects", href: "/projects/objects/pizza-stop", image: "/images/objects/pizza-stop.webp" },
       ],
     },
     paintings: {
@@ -201,12 +197,8 @@ export const translations = {
     messages: {
       customTitle: "Custom Messages",
       customDescription: "Individual custom street messages are a touching and appropriate method for every occasion. They contributed emotionally to marriage proposals, birthday surprises, ball invitations or declaration of love to someone. ADS are NOT accepted.",
-      cause1Title: "Street Cause 1",
-      cause1Description: "The street messages in Lovech have been circulating Bulgarian internet from 2023 to the present. Their task is to smile, inspire and instill good mood in the busy daily life among people.",
-      cause2Title: "Street Cause 2",
-      cause2Description: "The street messages in Lovech have been circulating Bulgarian internet from 2023 to the present. Their task is to smile, inspire and instill good mood in the busy daily life among people.",
-      cause3Title: "Street Cause 3",
-      cause3Description: "The street messages in Lovech have been circulating Bulgarian internet from 2023 to the present. Their task is to smile, inspire and instill good mood in the busy daily life among people.",
+      streetCauseTitle: "Street Cause",
+      streetCauseDescription: "The street messages in Lovech have been circulating Bulgarian internet from 2023 to the present. Their task is to smile, inspire and instill good mood in the busy daily life among people.",
     },
     pages: {
       paintingsIntro:

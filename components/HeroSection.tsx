@@ -51,7 +51,7 @@ export default function HeroSection({
           <div className="w-full md:w-1/2 flex flex-col items-center md:items-start text-center md:text-left">
             <div className="animate-fade-in-up">
               <div className="h-1 w-32 bg-blue-400 mb-8 mx-auto md:mx-0"></div>
-              <h1 className="text-6xl md:text-7xl lg:text-8xl font-serif font-bold mb-6 leading-tight">
+              <h1 className="text-5xl md:text-7xl lg:text-8xl font-serif font-bold mb-6 leading-tight">
                 Naidenov<span className="text-blue-400">ART</span>
               </h1>
             </div>
@@ -78,30 +78,47 @@ export default function HeroSection({
 
         {/* Socials / Bottom Info */}
         <div className="w-full px-6 py-8 md:px-12 flex flex-col md:flex-row justify-between items-center md:items-end border-t border-white/10 animate-fade-in-up delay-500">
-          <div className="text-xs text-gray-500 mb-4 md:mb-0 tracking-widest uppercase">
-            &copy; 2024 NaidenovART
+          <div className="text-xs text-gray-500 mb-4 md:mb-0 space-y-2">
+            <div className="tracking-widest uppercase">
+              &copy; 2026 NaidenovART
+            </div>
+            <div className="normal-case tracking-normal">
+              Уебсайтът е създаден от{" "}
+              <a
+                href="https://www.hmwspro.com/bg"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-gray-400 hover:text-blue-400 transition-colors underline"
+              >
+                H&M Website Provisioning
+              </a>
+            </div>
           </div>
           <div className="flex space-x-8">
             <a
-              href="#"
+              href="https://www.instagram.com/naidenov_art/"
+              target="_blank"
+              rel="noopener noreferrer"
               className="text-white/70 hover:text-blue-400 transition-colors transform hover:-translate-y-1 duration-300"
             >
               <span className="sr-only">Instagram</span>
               <svg
                 className="w-6 h-6"
-                fill="currentColor"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
                 viewBox="0 0 24 24"
                 aria-hidden="true"
               >
-                <path
-                  fillRule="evenodd"
-                  d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772 4.902 4.902 0 011.772-1.153c.636-.247 1.363-.416 2.427-.465 1.067-.047 1.407-.06 4.123-.06h.08v.001zm0-2c-2.67 0-2.99.01-4.05.06-1.066.05-1.79.227-2.48.497a6.9 6.9 0 00-2.52 1.64 6.9 6.9 0 00-1.64 2.52c-.27.69-.447 1.414-.497 2.48-.05 1.06-.06 1.38-.06 4.05v.08c0 2.67.01 2.99.06 4.05.05 1.066.227 1.79.497 2.48a6.9 6.9 0 001.64 2.52 6.9 6.9 0 002.52 1.64c.69.27 1.414.447 2.48.497 1.06.05 1.38.06 4.05.06h.08c2.67 0 2.99-.01 4.05-.06 1.066-.05 1.79-.227 2.48-.497a6.9 6.9 0 002.52-1.64 6.9 6.9 0 001.64-2.52c.27-.69.447-1.414.497-2.48.05-1.06.06-1.38.06-4.05v-.08c0-2.67-.01-2.99-.06-4.05-.05-1.066-.227-1.79-.497-2.48a6.9 6.9 0 00-1.64-2.52 6.9 6.9 0 00-2.52-1.64c-.69-.27-1.414-.447-2.48-.497-1.06-.05-1.38-.06-4.05-.06h-.08z"
-                  clipRule="evenodd"
-                />
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
               </svg>
             </a>
             <a
-              href="#"
+              href="https://www.facebook.com/profile.php?id=61573373319939"
+              target="_blank"
+              rel="noopener noreferrer"
               className="text-white/70 hover:text-blue-400 transition-colors transform hover:-translate-y-1 duration-300"
             >
               <span className="sr-only">Facebook</span>
