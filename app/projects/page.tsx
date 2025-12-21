@@ -35,7 +35,7 @@ export default function ProjectsPage() {
             href={routes.objects}
             className="group relative overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-br from-white/5 to-white/0 p-6 md:p-8 transition duration-500 hover:-translate-y-1 hover:shadow-[0_25px_60px_-25px_rgba(0,0,0,0.75)]"
           >
-            <div className="absolute inset-0 bg-[url('/images/bg-pics/unnamed.jpg')] bg-cover bg-center opacity-60 group-hover:opacity-70 transition duration-500" />
+            <div className="absolute inset-0 bg-[url('/images/bg-pics/unnamed.jpg')] bg-cover bg-center opacity-60 group-hover:opacity-70 transition duration-500 blur-sm" />
             <div className="relative space-y-3">
               <div className="text-xs uppercase tracking-[0.25em] text-blue-300">{lang === "bg" ? "Обекти" : "Objects"}</div>
               <h3 className="text-3xl font-serif font-bold">{copy.projects.objectsTitle}</h3>
@@ -51,7 +51,7 @@ export default function ProjectsPage() {
             href={routes.cars}
             className="group relative overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-br from-white/5 to-white/0 p-6 md:p-8 transition duration-500 hover:-translate-y-1 hover:shadow-[0_25px_60px_-25px_rgba(0,0,0,0.75)]"
           >
-            <div className="absolute inset-0 bg-[url('/images/bg-pics/unnamed.jpg')] bg-cover bg-center opacity-60 group-hover:opacity-70 transition duration-500" />
+            <div className="absolute inset-0 bg-cover bg-center opacity-60 group-hover:opacity-70 transition duration-500 blur-sm" style={{ backgroundImage: `url('/images/vehicles/alfa-romeo/alfa6.webp')` }} />
             <div className="relative space-y-3">
               <div className="text-xs uppercase tracking-[0.25em] text-blue-300">{lang === "bg" ? "Автомобили" : "Cars"}</div>
               <h3 className="text-3xl font-serif font-bold">{copy.projects.carsTitle}</h3>
@@ -67,7 +67,7 @@ export default function ProjectsPage() {
             href={routes.helmets}
             className="group relative overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-br from-white/5 to-white/0 p-6 md:p-8 transition duration-500 hover:-translate-y-1 hover:shadow-[0_25px_60px_-25px_rgba(0,0,0,0.75)]"
           >
-            <div className="absolute inset-0 bg-[url('/images/bg-pics/unnamed.jpg')] bg-cover bg-center opacity-60 group-hover:opacity-70 transition duration-500" />
+            <div className="absolute inset-0 bg-cover bg-center opacity-60 group-hover:opacity-70 transition duration-500 blur-sm" style={{ backgroundImage: `url('/images/helmets/helmets5.webp')` }} />
             <div className="relative space-y-3">
               <div className="text-xs uppercase tracking-[0.25em] text-blue-300">{lang === "bg" ? "Каски" : "Helmets"}</div>
               <h3 className="text-3xl font-serif font-bold">{copy.projects.helmetsTitle}</h3>
@@ -83,7 +83,7 @@ export default function ProjectsPage() {
             href={routes.laptops}
             className="group relative overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-br from-white/5 to-white/0 p-6 md:p-8 transition duration-500 hover:-translate-y-1 hover:shadow-[0_25px_60px_-25px_rgba(0,0,0,0.75)]"
           >
-            <div className="absolute inset-0 bg-[url('/images/bg-pics/unnamed.jpg')] bg-cover bg-center opacity-60 group-hover:opacity-70 transition duration-500" />
+            <div className="absolute inset-0 bg-cover bg-center opacity-60 group-hover:opacity-70 transition duration-500 blur-sm" style={{ backgroundImage: `url('/images/laptops/laptop6.webp')` }} />
             <div className="relative space-y-3">
               <div className="text-xs uppercase tracking-[0.25em] text-blue-300">{lang === "bg" ? "Лаптопи" : "Laptops"}</div>
               <h3 className="text-3xl font-serif font-bold">{copy.projects.laptopsTitle}</h3>

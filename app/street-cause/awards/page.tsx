@@ -9,11 +9,10 @@ import Image from "next/image";
 import Lightbox from "@/components/Lightbox";
 
 const awardsImages = [
-  "/images/messages/street-cause-2/1000026318.webp",
-  "/images/messages/street-cause-2/1000026319.webp",
-  "/images/messages/street-cause-2/1000026320.webp",
-  "/images/messages/street-cause-2/1000026323.webp",
-  "/images/messages/street-cause-2/1000026329.webp",
+  "/images/messages/awards/1000026318.webp",
+  "/images/messages/awards/1000026319.webp",
+  "/images/messages/awards/1000026320.webp",
+  "/images/messages/awards/1000026323.webp",
 ];
 
 export default function AwardsPage() {
@@ -89,6 +88,7 @@ export default function AwardsPage() {
     </main>
   );
 }
+
 
 
 

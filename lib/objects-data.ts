@@ -56,6 +56,7 @@ export const objectsData: ProjectData[] = [
           "/images/objects/Pizzastop/pizzastop2.webp",
           "/images/objects/Pizzastop/pizzastop4.webp",
           "/images/objects/Pizzastop/pizzastop5.webp",
+          "/images/objects/Pizzastop/pizzastop6.webp",
         ],
       },
     ],
@@ -136,6 +137,7 @@ export const objectsData: ProjectData[] = [
     ],
   },
 ];
+
 
 
 

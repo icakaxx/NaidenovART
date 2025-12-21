@@ -52,7 +52,7 @@ export default function MessagePage({ params }: MessagePageProps) {
         "/images/messages/personal-messages/1000026338.webp",
       ];
     } else if (params.slug === "street-cause") {
-      // Combine all street-cause images from all 3 folders
+      // Combine images from street-cause-1 and street-cause-2 folders
       return [
         // Street cause 1
         "/images/messages/street-cause-1/1000026321.webp",
@@ -61,17 +61,11 @@ export default function MessagePage({ params }: MessagePageProps) {
         "/images/messages/street-cause-1/1000026327.webp",
         "/images/messages/street-cause-1/1000026330.webp",
         // Street cause 2
-        "/images/messages/street-cause-2/1000026318.webp",
-        "/images/messages/street-cause-2/1000026319.webp",
-        "/images/messages/street-cause-2/1000026320.webp",
-        "/images/messages/street-cause-2/1000026323.webp",
-        "/images/messages/street-cause-2/1000026329.webp",
-        // Street cause 3
-        "/images/messages/street-cause-3/1000026322.webp",
-        "/images/messages/street-cause-3/1000026325.webp",
-        "/images/messages/street-cause-3/1000026326.webp",
-        "/images/messages/street-cause-3/1000026328.webp",
-        "/images/messages/street-cause-3/1000026331.webp",
+        "/images/messages/street-cause-2/1000026322.webp",
+        "/images/messages/street-cause-2/1000026325.webp",
+        "/images/messages/street-cause-2/1000026326.webp",
+        "/images/messages/street-cause-2/1000026328.webp",
+        "/images/messages/street-cause-2/1000026331.webp",
       ];
     }
     return [];
@@ -156,6 +150,7 @@ export default function MessagePage({ params }: MessagePageProps) {
     </main>
   );
 }
+
 
 
 
