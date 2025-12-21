@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import LanguageToggle from "./LanguageToggle";
 import type { Language } from "@/types/language";
 
@@ -28,6 +29,13 @@ export default function Header({ lang, navItems, onToggleLang }: HeaderProps) {
   return (
     <nav className="w-full px-6 py-6 md:px-12 md:py-8 flex justify-between items-center relative z-50" id="navbar">
       <Link href="/" className="flex items-center gap-4 cursor-pointer group">
+        <Image
+          src="/favicon1.png"
+          alt="NaidenovART Logo"
+          width={40}
+          height={40}
+          className="w-8 h-8 md:w-10 md:h-10 object-contain"
+        />
         <div className="text-xl md:text-3xl font-bold tracking-widest uppercase font-serif text-white group-hover:text-blue-400 transition-colors">
           NaidenovART
         </div>
