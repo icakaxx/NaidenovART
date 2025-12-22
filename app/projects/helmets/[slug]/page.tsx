@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { use, useMemo, useState } from "react";
 import { notFound } from "next/navigation";
 import Image from "next/image";
 import { NavItem } from "@/components/Header";
@@ -11,12 +11,13 @@ import { helmetsData } from "@/lib/helmets-data";
 import { useLanguage } from "@/lib/hooks/useLanguage";
 
 interface HelmetPageProps {
-  params: {
+  params: Promise<{
     slug: string;
-  };
+  }>;
 }
 
 export default function HelmetPage({ params }: HelmetPageProps) {
+  const { slug } = use(params);
   const [lang, toggleLang] = useLanguage();
   const [lightboxState, setLightboxState] = useState<{
     isOpen: boolean;
@@ -30,16 +31,16 @@ export default function HelmetPage({ params }: HelmetPageProps) {
   const navItems: NavItem[] = useMemo(() => buildNavItems(copy), [copy]);
 
   // Find helmet project data
-  const helmetData = helmetsData.find((p) => p.id === params.slug);
+  const helmetData = helmetsData.find((p) => p.id === slug);
 
   // Determine project title based on slug
   const projectTitle = useMemo(() => {
     if (!helmetData) return "";
-    if (params.slug === "helmet-collection") {
+    if (slug === "helmet-collection") {
       return lang === "bg" ? "Колекция Каски" : "Helmet Collection";
     }
     return helmetData.titleKey;
-  }, [helmetData, params.slug, lang]);
+  }, [helmetData, slug, lang]);
 
   if (!helmetData) {
     return notFound();

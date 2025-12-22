@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { use, useMemo, useState } from "react";
 import { notFound } from "next/navigation";
 import Image from "next/image";
 import { NavItem } from "@/components/Header";
@@ -11,12 +11,13 @@ import { objectsData } from "@/lib/objects-data";
 import { useLanguage } from "@/lib/hooks/useLanguage";
 
 interface ObjectPageProps {
-  params: {
+  params: Promise<{
     slug: string;
-  };
+  }>;
 }
 
 export default function ObjectPage({ params }: ObjectPageProps) {
+  const { slug } = use(params);
   const [lang, toggleLang] = useLanguage();
   const [lightboxState, setLightboxState] = useState<{
     isOpen: boolean;
@@ -30,7 +31,7 @@ export default function ObjectPage({ params }: ObjectPageProps) {
   const navItems: NavItem[] = useMemo(() => buildNavItems(copy), [copy]);
 
   // Find project data
-  const projectData = objectsData.find((p) => p.id === params.slug);
+  const projectData = objectsData.find((p) => p.id === slug);
 
   // Find translation for title
   // We assume the structure of translations matches the IDs added previously
@@ -38,9 +39,9 @@ export default function ObjectPage({ params }: ObjectPageProps) {
     if (!projectData) return "";
     // We try to find the item in the translations array that matches the slug
     // We added 'id' to the items in translations.ts
-    const item = copy.objects.items.find((i: any) => i.id === params.slug);
+    const item = copy.objects.items.find((i: any) => i.id === slug);
     return item ? item.title : projectData.titleKey;
-  }, [copy, params.slug, projectData]);
+  }, [copy, slug, projectData]);
 
   if (!projectData) {
     return notFound();

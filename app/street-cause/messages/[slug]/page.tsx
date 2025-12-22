@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { use, useMemo, useState } from "react";
 import { notFound } from "next/navigation";
 import Image from "next/image";
 import { NavItem } from "@/components/Header";
@@ -10,12 +10,13 @@ import { buildNavItems, translations } from "@/lib/translations";
 import { useLanguage } from "@/lib/hooks/useLanguage";
 
 interface MessagePageProps {
-  params: {
+  params: Promise<{
     slug: string;
-  };
+  }>;
 }
 
 export default function MessagePage({ params }: MessagePageProps) {
+  const { slug } = use(params);
   const [lang, toggleLang] = useLanguage();
   const [lightboxState, setLightboxState] = useState<{
     isOpen: boolean;
@@ -30,18 +31,18 @@ export default function MessagePage({ params }: MessagePageProps) {
 
   // Determine project title based on slug
   const projectTitle = useMemo(() => {
-    if (!params.slug) return "";
-    if (params.slug === "custom") {
+    if (!slug) return "";
+    if (slug === "custom") {
       return copy.messages.customTitle;
-    } else if (params.slug === "street-cause") {
+    } else if (slug === "street-cause") {
       return copy.messages.streetCauseTitle;
     }
     return "";
-  }, [copy, params.slug]);
+  }, [copy, slug]);
 
   // Images from actual folders - combine all street-cause folders
   const images = useMemo(() => {
-    if (params.slug === "custom") {
+    if (slug === "custom") {
       return [
         "/images/messages/personal-messages/1000026334.webp",
         "/images/messages/personal-messages/1000026335.webp",
@@ -49,7 +50,7 @@ export default function MessagePage({ params }: MessagePageProps) {
         "/images/messages/personal-messages/1000026337.webp",
         "/images/messages/personal-messages/1000026338.webp",
       ];
-    } else if (params.slug === "street-cause") {
+    } else if (slug === "street-cause") {
       // Combine images from street-cause-1 and street-cause-2 folders
       return [
         // Street cause 1
@@ -67,7 +68,7 @@ export default function MessagePage({ params }: MessagePageProps) {
       ];
     }
     return [];
-  }, [params.slug]);
+  }, [slug]);
 
   if (!projectTitle) {
     return notFound();
@@ -92,12 +93,12 @@ export default function MessagePage({ params }: MessagePageProps) {
             <h1 className="text-4xl md:text-5xl font-serif font-bold">
               {projectTitle}
             </h1>
-            {params.slug === "custom" && (
+            {slug === "custom" && (
               <p className="text-white/70 max-w-3xl leading-relaxed">
                 {copy.messages.customDescription}
               </p>
             )}
-            {params.slug === "street-cause" && (
+            {slug === "street-cause" && (
               <p className="text-white/70 max-w-3xl leading-relaxed">
                 {copy.messages.streetCauseDescription}
               </p>

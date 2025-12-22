@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { use, useMemo, useState } from "react";
 import { notFound } from "next/navigation";
 import Image from "next/image";
 import { NavItem } from "@/components/Header";
@@ -11,12 +11,13 @@ import { carsData } from "@/lib/cars-data";
 import { useLanguage } from "@/lib/hooks/useLanguage";
 
 interface CarPageProps {
-  params: {
+  params: Promise<{
     slug: string;
-  };
+  }>;
 }
 
 export default function CarPage({ params }: CarPageProps) {
+  const { slug } = use(params);
   const [lang, toggleLang] = useLanguage();
   const [lightboxState, setLightboxState] = useState<{
     isOpen: boolean;
@@ -30,20 +31,20 @@ export default function CarPage({ params }: CarPageProps) {
   const navItems: NavItem[] = useMemo(() => buildNavItems(copy), [copy]);
 
   // Find car project data
-  const carData = carsData.find((p) => p.id === params.slug);
+  const carData = carsData.find((p) => p.id === slug);
 
   // Determine project title based on slug
   const projectTitle = useMemo(() => {
     if (!carData) return "";
-    if (params.slug === "alfa-romeo-156") {
+    if (slug === "alfa-romeo-156") {
       return copy.cars.alfaromeoTitle;
-    } else if (params.slug === "road-assist") {
+    } else if (slug === "road-assist") {
       return copy.cars.roadassistTitle;
-    } else if (params.slug === "kadisha") {
+    } else if (slug === "kadisha") {
       return copy.cars.kadishaTitle;
     }
     return carData.titleKey;
-  }, [copy, params.slug, carData]);
+  }, [copy, slug, carData]);
 
   if (!carData) {
     return notFound();

@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { use, useMemo, useState } from "react";
 import { notFound } from "next/navigation";
 import Image from "next/image";
 import { NavItem } from "@/components/Header";
@@ -11,12 +11,13 @@ import { laptopsData } from "@/lib/laptops-data";
 import { useLanguage } from "@/lib/hooks/useLanguage";
 
 interface LaptopPageProps {
-  params: {
+  params: Promise<{
     slug: string;
-  };
+  }>;
 }
 
 export default function LaptopPage({ params }: LaptopPageProps) {
+  const { slug } = use(params);
   const [lang, toggleLang] = useLanguage();
   const [lightboxState, setLightboxState] = useState<{
     isOpen: boolean;
@@ -30,16 +31,16 @@ export default function LaptopPage({ params }: LaptopPageProps) {
   const navItems: NavItem[] = useMemo(() => buildNavItems(copy), [copy]);
 
   // Find laptop project data
-  const laptopData = laptopsData.find((p) => p.id === params.slug);
+  const laptopData = laptopsData.find((p) => p.id === slug);
 
   // Determine project title based on slug
   const projectTitle = useMemo(() => {
     if (!laptopData) return "";
-    if (params.slug === "laptops-collection") {
+    if (slug === "laptops-collection") {
       return lang === "bg" ? "Колекция Лаптопи" : "Laptop Collection";
     }
     return laptopData.titleKey;
-  }, [params.slug, laptopData, lang]);
+  }, [slug, laptopData, lang]);
 
   if (!laptopData) {
     return notFound();
