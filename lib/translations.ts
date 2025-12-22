@@ -113,6 +113,10 @@ export const translations = {
       streetCauseTitle: "Улична кауза",
       streetCauseDescription: "Уличните послания в гр. Ловеч обикалят българският интернет от 2023 г. до днес. Тяхната задача е да усмихват, вдъхновяват и всяват добро настроение в забързаното ежедневие сред хората.",
     },
+    promotionalPopup: {
+      message: "Искате сайт като този? Разгледайте нашата работа на",
+      linkText: "hmwspro.com",
+    },
   },
   en: {
     nav: {
@@ -199,6 +203,10 @@ export const translations = {
       customDescription: "Individual custom street messages are a touching and appropriate method for every occasion. They contributed emotionally to marriage proposals, birthday surprises, ball invitations or declaration of love to someone. ADS are NOT accepted.",
       streetCauseTitle: "Street Cause",
       streetCauseDescription: "The street messages in Lovech have been circulating Bulgarian internet from 2023 to the present. Their task is to smile, inspire and instill good mood in the busy daily life among people.",
+    },
+    promotionalPopup: {
+      message: "Want a site like this one? Check our work at",
+      linkText: "hmwspro.com",
     },
     pages: {
       paintingsIntro:

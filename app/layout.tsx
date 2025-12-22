@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Montserrat, Playfair_Display } from "next/font/google";
 import "./globals.css";
+import PromotionalPopup from "@/components/PromotionalPopup";
+import Footer from "@/components/Footer";
 
 const montserrat = Montserrat({
   subsets: ["latin"],
@@ -31,7 +33,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="bg" className={`${montserrat.variable} ${playfairDisplay.variable}`}>
-      <body className="bg-neutral-900 text-white antialiased selection:bg-blue-500 selection:text-white">{children}</body>
+      <body className="bg-neutral-900 text-white antialiased selection:bg-blue-500 selection:text-white">
+        {children}
+        <Footer />
+        <PromotionalPopup />
+      </body>
     </html>
   );
 }
