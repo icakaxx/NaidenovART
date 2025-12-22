@@ -4,7 +4,7 @@ import { useMemo, useState } from "react";
 import { NavItem } from "@/components/Header";
 import PageHeader from "@/components/PageHeader";
 import { buildNavItems, translations } from "@/lib/translations";
-import type { Language } from "@/types/language";
+import { useLanguage } from "@/lib/hooks/useLanguage";
 import Image from "next/image";
 import Lightbox from "@/components/Lightbox";
 
@@ -16,7 +16,7 @@ const awardsImages = [
 ];
 
 export default function AwardsPage() {
-  const [lang, setLang] = useState<Language>("bg");
+  const [lang, toggleLang] = useLanguage();
   const [lightboxState, setLightboxState] = useState<{
     isOpen: boolean;
     src: string;
@@ -27,8 +27,6 @@ export default function AwardsPage() {
 
   const copy = useMemo(() => translations[lang], [lang]);
   const navItems: NavItem[] = useMemo(() => buildNavItems(copy), [copy]);
-
-  const toggleLang = () => setLang((prev) => (prev === "bg" ? "en" : "bg"));
 
   return (
     <main className="min-h-screen bg-neutral-900 text-white relative">

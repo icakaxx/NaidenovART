@@ -7,7 +7,7 @@ import { NavItem } from "@/components/Header";
 import PageHeader from "@/components/PageHeader";
 import Lightbox from "@/components/Lightbox";
 import { buildNavItems, translations } from "@/lib/translations";
-import type { Language } from "@/types/language";
+import { useLanguage } from "@/lib/hooks/useLanguage";
 
 interface MessagePageProps {
   params: {
@@ -16,7 +16,7 @@ interface MessagePageProps {
 }
 
 export default function MessagePage({ params }: MessagePageProps) {
-  const [lang, setLang] = useState<Language>("bg");
+  const [lang, toggleLang] = useLanguage();
   const [lightboxState, setLightboxState] = useState<{
     isOpen: boolean;
     src: string;
@@ -27,8 +27,6 @@ export default function MessagePage({ params }: MessagePageProps) {
 
   const copy = useMemo(() => translations[lang], [lang]);
   const navItems: NavItem[] = useMemo(() => buildNavItems(copy), [copy]);
-
-  const toggleLang = () => setLang((prev) => (prev === "bg" ? "en" : "bg"));
 
   // Determine project title based on slug
   const projectTitle = useMemo(() => {

@@ -1,19 +1,15 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useMemo } from "react";
 import HeroSection from "@/components/HeroSection";
 import PortfolioSection from "@/components/PortfolioSection";
-import type { Language } from "@/types/language";
 import { buildNavItems, translations } from "@/lib/translations";
+import { useLanguage } from "@/lib/hooks/useLanguage";
 
 export default function Home() {
-  const [lang, setLang] = useState<Language>("bg");
+  const [lang, toggleLang] = useLanguage();
   const copy = useMemo(() => translations[lang], [lang]);
   const navItems = useMemo(() => buildNavItems(copy), [copy]);
-
-  const toggleLang = () => {
-    setLang((prev) => (prev === "bg" ? "en" : "bg"));
-  };
 
   return (
     <main className="min-h-screen">

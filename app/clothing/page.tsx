@@ -1,17 +1,15 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useMemo } from "react";
 import { NavItem } from "@/components/Header";
 import PageHeader from "@/components/PageHeader";
 import { buildNavItems, translations } from "@/lib/translations";
-import type { Language } from "@/types/language";
+import { useLanguage } from "@/lib/hooks/useLanguage";
 
 export default function ClothingPage() {
-  const [lang, setLang] = useState<Language>("bg");
+  const [lang, toggleLang] = useLanguage();
   const copy = useMemo(() => translations[lang], [lang]);
   const navItems: NavItem[] = useMemo(() => buildNavItems(copy), [copy]);
-
-  const toggleLang = () => setLang((prev) => (prev === "bg" ? "en" : "bg"));
 
   return (
     <main className="min-h-screen bg-neutral-900 text-white">

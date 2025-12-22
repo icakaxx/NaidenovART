@@ -8,7 +8,7 @@ import PageHeader from "@/components/PageHeader";
 import Lightbox from "@/components/Lightbox";
 import { buildNavItems, translations } from "@/lib/translations";
 import { carsData } from "@/lib/cars-data";
-import type { Language } from "@/types/language";
+import { useLanguage } from "@/lib/hooks/useLanguage";
 
 interface CarPageProps {
   params: {
@@ -17,7 +17,7 @@ interface CarPageProps {
 }
 
 export default function CarPage({ params }: CarPageProps) {
-  const [lang, setLang] = useState<Language>("bg");
+  const [lang, toggleLang] = useLanguage();
   const [lightboxState, setLightboxState] = useState<{
     isOpen: boolean;
     src: string;
@@ -28,8 +28,6 @@ export default function CarPage({ params }: CarPageProps) {
 
   const copy = useMemo(() => translations[lang], [lang]);
   const navItems: NavItem[] = useMemo(() => buildNavItems(copy), [copy]);
-
-  const toggleLang = () => setLang((prev) => (prev === "bg" ? "en" : "bg"));
 
   // Find car project data
   const carData = carsData.find((p) => p.id === params.slug);

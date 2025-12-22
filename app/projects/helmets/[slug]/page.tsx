@@ -8,7 +8,7 @@ import PageHeader from "@/components/PageHeader";
 import Lightbox from "@/components/Lightbox";
 import { buildNavItems, translations } from "@/lib/translations";
 import { helmetsData } from "@/lib/helmets-data";
-import type { Language } from "@/types/language";
+import { useLanguage } from "@/lib/hooks/useLanguage";
 
 interface HelmetPageProps {
   params: {
@@ -17,7 +17,7 @@ interface HelmetPageProps {
 }
 
 export default function HelmetPage({ params }: HelmetPageProps) {
-  const [lang, setLang] = useState<Language>("bg");
+  const [lang, toggleLang] = useLanguage();
   const [lightboxState, setLightboxState] = useState<{
     isOpen: boolean;
     src: string;
@@ -28,8 +28,6 @@ export default function HelmetPage({ params }: HelmetPageProps) {
 
   const copy = useMemo(() => translations[lang], [lang]);
   const navItems: NavItem[] = useMemo(() => buildNavItems(copy), [copy]);
-
-  const toggleLang = () => setLang((prev) => (prev === "bg" ? "en" : "bg"));
 
   // Find helmet project data
   const helmetData = helmetsData.find((p) => p.id === params.slug);
