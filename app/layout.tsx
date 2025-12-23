@@ -3,6 +3,7 @@ import { Montserrat, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import PromotionalPopup from "@/components/PromotionalPopup";
 import Footer from "@/components/Footer";
+import { Analytics } from "@vercel/analytics/react";
 
 const montserrat = Montserrat({
   subsets: ["latin"],
@@ -37,6 +38,7 @@ export default function RootLayout({
         {children}
         <Footer />
         <PromotionalPopup />
+        <Analytics />
       </body>
     </html>
   );
